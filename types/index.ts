@@ -13,7 +13,7 @@ export interface Project {
   title: string
   url: string
   category: string
-  stack: string
+  stack?: string
   imageUrl: string
 }
 
@@ -71,7 +71,7 @@ export interface CaseStudy {
   slug: string
   title: string
   category: string
-  stack: string
+  stack?: string
   url: string
   imageUrl: string
   problem: string

@@ -46,7 +46,6 @@ export default function OurWork(): React.JSX.Element {
                 <h3 className="font-display text-[32px] text-white leading-tight mb-3">
                   {project.title}
                 </h3>
-                <p className="font-body text-[12px] text-wm-grey mb-6">{project.stack}</p>
                 <span className="font-body text-gold text-xs tracking-widest uppercase">
                   Visit site →
                 </span>

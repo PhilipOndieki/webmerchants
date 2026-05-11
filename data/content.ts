@@ -45,22 +45,19 @@ export const projects: Project[] = [
     title: 'Insight Afri Research',
     url: 'https://www.insightafriresearch.com',
     category: 'Research & Analytics',
-    stack: 'React · Firebase · Tailwind',
-    imageUrl: 'https://placehold.co/800x500/0a0a0a/c9a84c?text=Insight+Afri+Research',
+    imageUrl: '/insightafriresearch.webp',
   },
   {
     title: 'Dual Scope Engineering',
     url: 'https://dualscopeengineering.com',
     category: 'Engineering & Construction',
-    stack: 'Next.js · Vercel · Gemini AI',
-    imageUrl: 'https://placehold.co/800x500/0a0a0a/c9a84c?text=Dual+Scope+Engineering',
+    imageUrl: '/dualscopeeng.webp',
   },
   {
     title: 'Mkulima Sharp',
     url: 'https://www.mkulimasharp.com',
     category: 'AgriTech E-Commerce',
-    stack: 'React · Firebase · M-Pesa',
-    imageUrl: 'https://placehold.co/800x500/0a0a0a/c9a84c?text=Mkulima+Sharp',
+    imageUrl: '/mkulimasharp.webp',
   },
 ]
 

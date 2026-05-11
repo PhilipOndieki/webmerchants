@@ -68,7 +68,6 @@ export default function WorkPage(): React.JSX.Element {
                 <h2 className="font-display text-[40px] font-light text-white leading-tight mb-4">
                   {cs.title}
                 </h2>
-                <p className="font-body text-[12px] text-wm-grey mb-8">{cs.stack}</p>
 
                 <div className="flex flex-col gap-6 mb-10">
                   {[
