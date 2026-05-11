@@ -37,7 +37,7 @@ export const metadata: Metadata = {
   metadataBase: new URL('https://webmerchants.co.ke'),
   alternates: { canonical: 'https://webmerchants.co.ke' },
   openGraph: {
-    title: 'Webmerchants — Web Design Agency Nairobi Kenya',
+    title: 'Webmerchants',
     description: 'Premium web design, development and SEO for Kenyan businesses.',
     url: 'https://webmerchants.co.ke',
     siteName: 'Webmerchants',
@@ -46,7 +46,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Webmerchants — Web Design Agency Nairobi Kenya',
+    title: 'Webmerchants',
     description: 'Premium web design, development and SEO for Kenyan businesses.',
   },
 }

@@ -4,21 +4,21 @@ import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
 
 export const metadata: Metadata = {
-  title: 'About Philip Ondieki — Web Developer Nairobi | Webmerchants Kenya',
+  title: 'About Webmerchants — Web Design Agency Nairobi | Built in Kenya',
   description:
-    'Philip Ondieki is a full-stack developer and founder of Webmerchants, a premium web agency based in Nairobi Kenya. 2x hackathon winner. CS50 certified. Building websites that win business for Kenyan brands.',
+    'Webmerchants is a team of Kenyan web developers and digital strategists based in Nairobi. 2x hackathon winners. CS50 certified. Building websites that win business for Kenyan brands across all 47 counties.',
   keywords: [
     'web developer Nairobi',
-    'Philip Ondieki',
-    'Webmerchants founder',
-    'Kenyan web developer',
-    'full stack developer Kenya',
+    'Webmerchants team',
+    'Kenyan web agency',
+    'full stack developers Kenya',
+    'web design studio Nairobi',
   ],
   alternates: { canonical: 'https://webmerchants.co.ke/about' },
   openGraph: {
-    title: 'About Philip Ondieki — Web Developer Nairobi | Webmerchants Kenya',
+    title: 'About Webmerchants — Web Design Agency Nairobi | Built in Kenya',
     description:
-      'Philip Ondieki is a full-stack developer and founder of Webmerchants, a premium web agency based in Nairobi Kenya.',
+      'Webmerchants is a team of Kenyan web developers and digital strategists based in Nairobi.',
     url: 'https://webmerchants.co.ke/about',
     siteName: 'Webmerchants',
     locale: 'en_KE',
@@ -34,14 +34,18 @@ export default function AboutPage(): React.JSX.Element {
       {/* Hero */}
       <section className="bg-wm-black py-24 lg:py-36 pt-36 lg:pt-48">
         <div className="px-6 lg:px-12">
-          <p className="font-body text-gold text-xs tracking-[0.28em] uppercase mb-6">The Developer</p>
+          <p className="font-body text-gold text-xs tracking-[0.28em] uppercase mb-6">
+            Who We Are
+          </p>
           <h1 className="font-display text-[64px] font-light text-wm-off leading-tight max-w-3xl">
-            Premium Web Development,<br />Built in Nairobi.
+            A Team of Kenyan Developers.<br />
+            <em className="text-gold italic">Built to Win Here.</em>
           </h1>
           <p className="font-body text-[15px] text-wm-grey max-w-lg leading-relaxed mt-8">
-            Webmerchants is built by Philip Ondieki — a full-stack developer, IT manager, and
-            two-time hackathon winner based in Nairobi, Kenya. This is not an agency with dozens of
-            outsourced developers. When you work with Webmerchants, you work directly with Philip.
+            We are not a faceless global agency that treats Kenya as a footnote.
+            We are a tight-knit group of developers, designers, and digital strategists
+            who grew up here, built careers here, and understand exactly what it takes
+            to win business in this market.
           </p>
         </div>
       </section>
@@ -52,9 +56,8 @@ export default function AboutPage(): React.JSX.Element {
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-8">
             {[
               { number: '15+', label: 'Projects Delivered' },
-              { number: '2', label: 'Hackathon Wins' },
-              { number: '5+', label: 'Years Experience' },
-              { number: '100%', label: 'Client Retention' },
+              { number: '5+', label: 'Years in Market' },
+              { number: '47', label: 'Counties We Serve' },
             ].map((stat) => (
               <div key={stat.label} className="text-center">
                 <p className="font-display text-[48px] text-gold leading-none">{stat.number}</p>
@@ -67,68 +70,89 @@ export default function AboutPage(): React.JSX.Element {
         </div>
       </section>
 
-      {/* Story section */}
+      {/* Origin story */}
       <section className="bg-wm-black py-24 lg:py-36">
         <div className="px-6 lg:px-12 grid grid-cols-1 lg:grid-cols-2 gap-16">
           <div>
-            <p className="font-body text-gold text-xs tracking-[0.28em] uppercase mb-4">The Story</p>
+            <p className="font-body text-gold text-xs tracking-[0.28em] uppercase mb-4">
+              The Story
+            </p>
             <h2 className="font-display text-[42px] font-light text-wm-off leading-tight">
-              Why Webmerchants Exists.
+              We Got Tired of Watching Good Kenyan Businesses Lose Online.
             </h2>
           </div>
           <div className="flex flex-col gap-6">
             <p className="font-body text-[15px] text-wm-grey leading-relaxed">
-              Kenyan businesses deserve world-class websites. For too long, the choice has been
-              between expensive foreign agencies that do not understand the local market, and cheap freelancers
-              who disappear after payment. Webmerchants was built to be the third option.
+              It started with a question none of us could stop asking: why do so many brilliant
+              Kenyan businesses have terrible websites? A hardware store in Eldoret doing
+              KSh 3 million a month, invisible on Google. A Nairobi law firm charging premium rates,
+              with a site that last looked modern in 2013. A Mombasa tour operator whose
+              competitorsm half as experienced, were getting all the international bookings.
             </p>
             <p className="font-body text-[15px] text-wm-grey leading-relaxed">
-              Philip Ondieki started building web platforms while studying Real Estate at the
-              Technical University of Kenya. What began as side projects grew into production platforms —
-              EveShield (1st Place, PowerHack 2025), MamaShield (Most Astounding Project, GEGIS 2026),
-              and platforms serving thousands of users across Kenya.
+              The answer was always the same: the foreign agencies were too expensive and too
+              disconnected from local realities. The local freelancers were too unreliable who are great
+              at taking a deposit, poor at delivering. There was no serious, accountable, technically
+              excellent web team that understood Kenya the way a Kenyan does.
             </p>
             <p className="font-body text-[15px] text-wm-grey leading-relaxed">
-              Today, Webmerchants works with Kenyan startups, NGOs, engineering firms, and
-              established businesses that are serious about their digital presence. Every site is built
-              with Nairobi in mind — fast on 3G, optimised for Google Kenya, and ready for M-Pesa.
+              So we built one. Webmerchants was founded on a single belief: that a Kenyan business
+              with a world-class website wins. Not sometimes. Every time. Our job is to give every
+              client that unfair advantage: responsive, mobile-first, Google Kenya optimised,
+              and built to last.
             </p>
           </div>
         </div>
       </section>
 
-      {/* Credentials */}
+      {/* What makes us different — editorial list */}
       <section className="bg-wm-dark py-24 lg:py-36">
         <div className="px-6 lg:px-12">
-          <p className="font-body text-gold text-xs tracking-[0.28em] uppercase mb-4">Credentials</p>
+          <p className="font-body text-gold text-xs tracking-[0.28em] uppercase mb-4">
+            The Difference
+          </p>
           <h2 className="font-display text-[42px] font-light text-wm-off leading-tight mb-16">
-            Built on Proven Results.
+            We Are Not Like Other Agencies.<br />Here Is Why That Matters.
           </h2>
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+
+          <div className="flex flex-col gap-0">
             {[
               {
-                title: '1st Place — PowerHack 2025',
-                desc: 'EveShield: Community-powered emergency response platform for women\'s safety across Africa.',
+                number: '01',
+                title: 'We Know the Kenyan Customer',
+                body: 'We know the 3G speeds in Kisumu. We know that most of your clients will land on your site via a mid-range Android on Safaricom. We build for that reality, not for a fast fibre connection in London.',
               },
               {
-                title: 'Most Astounding Project — GEGIS 2026',
-                desc: 'MamaShield: Streamlit dashboard analysing Kenya DHS 2022 data on maternal health outcomes.',
+                number: '02',
+                title: 'We Stay After the Launch',
+                body: 'Most freelancers vanish the moment the final payment clears. We include 30 days of post-launch support on every project and offer ongoing maintenance for clients who want a long-term partner.',
               },
               {
-                title: 'Harvard CS50 Certified',
-                desc: 'Introduction to Computer Science — Harvard University\'s flagship programming course.',
+                number: '03',
+                title: 'We Speak Both Languages',
+                body: 'We understand the Kenyan business owner as well as we understand the code. We ask the right questions before we write a single line about your customers, your competitors, your margins. A website built without that context is just decoration.',
               },
               {
-                title: 'Power Learn Project Certified',
-                desc: 'Full-stack development and software engineering certification.',
+                number: '04',
+                title: 'We Have Built at Scale for Kenya',
+                body: 'From e-commerce platforms processing hundreds of M-Pesa orders weekly, to civic platforms serving thousands of Kenyans across 47 counties we have operated at real production scale, under real Kenyan network conditions. We do not practice on your business.',
               },
-            ].map((card) => (
+            ].map((item) => (
               <div
-                key={card.title}
-                className="border border-wm-border p-8 hover:border-gold transition-colors duration-200"
+                key={item.number}
+                className="border-t border-wm-border pt-6 pb-8 grid grid-cols-1 lg:grid-cols-12 gap-4 group"
               >
-                <h3 className="font-display text-[22px] text-white mb-3">{card.title}</h3>
-                <p className="font-body text-[14px] text-wm-grey leading-relaxed">{card.desc}</p>
+                <span className="font-body text-[11px] text-gold uppercase tracking-[0.2em] lg:col-span-1 mt-1">
+                  {item.number}
+                </span>
+                <div className="lg:col-span-11 grid grid-cols-1 lg:grid-cols-2 gap-4">
+                  <h3 className="font-display text-[24px] text-white leading-snug">
+                    {item.title}
+                  </h3>
+                  <p className="font-body text-[14px] text-wm-grey leading-relaxed">
+                    {item.body}
+                  </p>
+                </div>
               </div>
             ))}
           </div>
@@ -136,9 +160,11 @@ export default function AboutPage(): React.JSX.Element {
       </section>
 
       {/* Values */}
-      <section className="bg-wm-black py-24 lg:py-36">
+      <section className="bg-wm-dark py-24 lg:py-36">
         <div className="px-6 lg:px-12">
-          <p className="font-body text-gold text-xs tracking-[0.28em] uppercase mb-4">What We Stand For</p>
+          <p className="font-body text-gold text-xs tracking-[0.28em] uppercase mb-4">
+            What We Stand For
+          </p>
           <h2 className="font-display text-[42px] font-light text-wm-off leading-tight mb-16">
             Four Principles. No Exceptions.
           </h2>
@@ -150,18 +176,21 @@ export default function AboutPage(): React.JSX.Element {
               },
               {
                 title: 'Transparency',
-                desc: 'Fixed pricing. No hidden fees. You know the cost before we start.',
+                desc: 'Fixed pricing. No hidden fees. You know the full cost before we write a single line of code.',
               },
               {
                 title: 'Local-first',
-                desc: 'Every site is optimised for Kenyan users — mobile, 3G, Google Kenya, M-Pesa.',
+                desc: 'Every site is optimised for Kenyan users — mobile, 3G, Google Kenya, M-Pesa. Always.',
               },
               {
                 title: 'Craftsmanship',
-                desc: 'We build to last. Clean code, scalable architecture, documentation included.',
+                desc: 'We build to last. Clean code, scalable architecture, documentation handed over at launch.',
               },
             ].map((item) => (
-              <div key={item.title} className="border-t border-wm-border pt-6 pb-6 grid grid-cols-1 lg:grid-cols-3 gap-4">
+              <div
+                key={item.title}
+                className="border-t border-wm-border pt-6 pb-6 grid grid-cols-1 lg:grid-cols-3 gap-4"
+              >
                 <h3 className="font-display text-[22px] text-white">{item.title}</h3>
                 <p className="font-body text-[14px] text-wm-grey leading-relaxed lg:col-span-2">
                   {item.desc}
@@ -172,14 +201,28 @@ export default function AboutPage(): React.JSX.Element {
         </div>
       </section>
 
+      {/* Manifesto pull-quote */}
+      <section className="bg-wm-black py-24 lg:py-36 border-y border-wm-border">
+        <div className="px-6 lg:px-12 max-w-4xl">
+          <p className="font-display text-[36px] lg:text-[52px] font-light text-wm-off leading-tight italic">
+            &ldquo;Kenya has no shortage of brilliant businesses. It has a shortage of brilliant websites.
+            We are here to fix that one client at a time, one county at a time.&rdquo;
+          </p>
+          <p className="font-body text-[12px] text-gold uppercase tracking-[0.25em] mt-8">
+            The Webmerchants Team · Nairobi, Kenya
+          </p>
+        </div>
+      </section>
+
       {/* Bottom CTA */}
       <section className="bg-wm-dark py-24">
         <div className="px-6 lg:px-12 text-center">
           <h2 className="font-display text-[48px] font-light text-wm-off leading-tight mb-6">
-            Work Directly with Philip.
+            Work With a Team That Gets It.
           </h2>
           <p className="font-body text-[15px] text-wm-grey max-w-lg mx-auto leading-relaxed mb-10">
-            No account managers. No junior developers. Your project, Philip&apos;s full attention.
+            No account managers passing messages. No offshore developers guessing what Kenyan customers want.
+            Just a focused team that builds, ships, and delivers.
           </p>
           <div className="flex flex-wrap items-center justify-center gap-6">
             <a
