@@ -1,3 +1,4 @@
+import Link from 'next/link'
 import { services } from '@/data/content'
 
 export default function Services(): React.JSX.Element {
@@ -37,14 +38,24 @@ export default function Services(): React.JSX.Element {
               </p>
 
               {/* Hover CTA */}
-              <a
-                href="#contact"
+              <Link
+                href={`/services#${service.numeral.toLowerCase()}`}
                 className="font-body text-gold text-xs tracking-widest uppercase opacity-0 group-hover:opacity-100 transition-opacity duration-200 mt-auto"
               >
                 Learn more →
-              </a>
+              </Link>
             </article>
           ))}
+        </div>
+
+        {/* View all link */}
+        <div className="mt-10 flex justify-end">
+          <Link
+            href="/services"
+            className="font-body text-[12px] uppercase tracking-[0.2em] text-wm-grey hover:text-gold transition-colors duration-200"
+          >
+            View all services →
+          </Link>
         </div>
       </div>
     </section>

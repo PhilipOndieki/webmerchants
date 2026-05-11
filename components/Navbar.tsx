@@ -1,11 +1,14 @@
 'use client'
 
 import { useState, useEffect } from 'react'
+import Link from 'next/link'
+import { usePathname } from 'next/navigation'
 import { navLinks } from '@/data/content'
 
 export default function Navbar(): React.JSX.Element {
   const [scrolled, setScrolled] = useState<boolean>(false)
   const [menuOpen, setMenuOpen] = useState<boolean>(false)
+  const pathname = usePathname()
 
   useEffect((): (() => void) => {
     const handleScroll = (): void => {
@@ -27,7 +30,7 @@ export default function Navbar(): React.JSX.Element {
         }`}
       >
         {/* Logo */}
-        <a href="#" className="flex items-center gap-1.5 group">
+        <Link href="/" className="flex items-center gap-1.5 group">
           <span className="font-display text-[22px] text-wm-off tracking-tight">W</span>
           <svg
             width="6"
@@ -42,30 +45,32 @@ export default function Navbar(): React.JSX.Element {
           <span className="font-display text-[22px] text-wm-off tracking-tight group-hover:text-gold transition-colors">
             Webmerchants
           </span>
-        </a>
+        </Link>
 
         {/* Desktop nav links */}
         <ul className="hidden lg:flex items-center gap-8">
           {navLinks.map((link) => (
             <li key={link.href}>
-              <a
+              <Link
                 href={link.href}
-                className="font-body text-[11px] uppercase tracking-[0.18em] text-wm-grey hover:text-gold transition-colors duration-200"
+                className={`font-body text-[11px] uppercase tracking-[0.18em] transition-colors duration-200 ${
+                  pathname === link.href ? 'text-gold' : 'text-wm-grey hover:text-gold'
+                }`}
               >
                 {link.label}
-              </a>
+              </Link>
             </li>
           ))}
         </ul>
 
         {/* Desktop CTA */}
         <div className="hidden lg:flex items-center">
-          <a
-            href="#contact"
+          <Link
+            href="/contact"
             className="font-body text-[11px] uppercase tracking-[0.18em] bg-gold text-wm-black px-6 py-3 hover:bg-gold-light transition-colors duration-200"
           >
             Get a Quote
-          </a>
+          </Link>
         </div>
 
         {/* Mobile hamburger */}
@@ -95,23 +100,25 @@ export default function Navbar(): React.JSX.Element {
           <ul className="flex flex-col items-center gap-8">
             {navLinks.map((link) => (
               <li key={link.href}>
-                <a
+                <Link
                   href={link.href}
                   onClick={closeMenu}
-                  className="font-display text-5xl text-wm-off hover:text-gold transition-colors duration-200 tracking-wide"
+                  className={`font-display text-5xl transition-colors duration-200 tracking-wide ${
+                    pathname === link.href ? 'text-gold' : 'text-wm-off hover:text-gold'
+                  }`}
                 >
                   {link.label}
-                </a>
+                </Link>
               </li>
             ))}
           </ul>
-          <a
-            href="#contact"
+          <Link
+            href="/contact"
             onClick={closeMenu}
             className="mt-12 font-body text-[11px] uppercase tracking-[0.2em] bg-gold text-wm-black px-8 py-4 hover:bg-gold-light transition-colors"
           >
             Get a Quote
-          </a>
+          </Link>
         </div>
       )}
     </>

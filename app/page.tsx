@@ -1,11 +1,10 @@
 import AnnouncementBar from '@/components/AnnouncementBar'
 import Navbar from '@/components/Navbar'
 import Hero from '@/components/Hero'
+import TrustStrip from '@/components/TrustStrip'
 import Services from '@/components/Services'
-import StackSelector from '@/components/StackSelector'
 import OurWork from '@/components/OurWork'
 import HowWeWork from '@/components/HowWeWork'
-import BizRegistration from '@/components/BizRegistration'
 import Pricing from '@/components/Pricing'
 import Testimonials from '@/components/Testimonials'
 import Contact from '@/components/Contact'
@@ -17,11 +16,10 @@ export default function Page(): React.JSX.Element {
       <AnnouncementBar />
       <Navbar />
       <Hero />
+      <TrustStrip />
       <Services />
-      <StackSelector />
       <OurWork />
       <HowWeWork />
-      <BizRegistration />
       <Pricing />
       <Testimonials />
       <Contact />

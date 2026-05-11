@@ -1,4 +1,5 @@
 import Image from 'next/image'
+import Link from 'next/link'
 import { projects } from '@/data/content'
 
 export default function OurWork(): React.JSX.Element {
@@ -52,6 +53,16 @@ export default function OurWork(): React.JSX.Element {
               </div>
             </a>
           ))}
+        </div>
+
+        {/* View all link */}
+        <div className="mt-10 flex justify-end">
+          <Link
+            href="/work"
+            className="font-body text-[12px] uppercase tracking-[0.2em] text-wm-grey hover:text-gold transition-colors duration-200"
+          >
+            View all work →
+          </Link>
         </div>
       </div>
     </section>

@@ -9,12 +9,6 @@ export interface Service {
   description: string
 }
 
-export interface StackOption {
-  id: string
-  label: string
-  benefit: string
-}
-
 export interface Project {
   title: string
   url: string
@@ -30,12 +24,6 @@ export interface ProcessStep {
   duration: string
 }
 
-export interface BizService {
-  title: string
-  price: number
-  iconPath: string
-}
-
 export interface PricingTier {
   name: string
   price: string
@@ -48,6 +36,7 @@ export interface Testimonial {
   quote: string
   name: string
   company: string
+  metric: string
 }
 
 export interface ContactForm {
@@ -55,5 +44,38 @@ export interface ContactForm {
   email: string
   phone: string
   service: string
+  budget: string
   message: string
+}
+
+export interface TrustClient {
+  name: string
+  url: string
+}
+
+export interface AddOn {
+  title: string
+  price: string
+  description: string
+}
+
+export interface BlogPost {
+  slug: string
+  title: string
+  excerpt: string
+  date: string
+  readTime: string
+}
+
+export interface CaseStudy {
+  slug: string
+  title: string
+  category: string
+  stack: string
+  url: string
+  imageUrl: string
+  problem: string
+  solution: string
+  result: string
+  metric: string
 }

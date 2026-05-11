@@ -21,6 +21,11 @@ export default function Testimonials(): React.JSX.Element {
               key={testimonial.name}
               className="border-l-2 border-gold pl-8 py-6"
             >
+              {/* Metric stat */}
+              <span className="font-body text-[10px] text-gold uppercase tracking-[0.2em] block mb-4">
+                {testimonial.metric}
+              </span>
+
               {/* Opening quote mark */}
               <span
                 className="font-display text-[80px] text-gold leading-none block -mb-4"

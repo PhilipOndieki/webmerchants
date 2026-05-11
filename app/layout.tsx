@@ -1,7 +1,6 @@
 import type { Metadata } from 'next'
 import { Cormorant_Garamond, Didact_Gothic } from 'next/font/google'
 import './globals.css'
-import CursorTracker from '@/components/CursorTracker'
 
 const cormorantGaramond = Cormorant_Garamond({
   subsets: ['latin'],
@@ -19,25 +18,36 @@ const didactGothic = Didact_Gothic({
 })
 
 export const metadata: Metadata = {
-  title: 'Webmerchants — Make You a Market Champion',
+  title: {
+    default: 'Webmerchants — Web Design Agency Nairobi Kenya',
+    template: '%s | Webmerchants Kenya',
+  },
   description:
-    'Premium web design, development and SEO for ambitious Kenyan brands. Based in Nairobi, Kenya.',
+    'Premium web design, development and SEO for Kenyan businesses. Based in Nairobi. Serving all 47 counties. M-Pesa accepted. WhatsApp: +254 703 141 296.',
   keywords: [
     'web design Kenya',
     'web development Nairobi',
+    'website design Kenya',
     'SEO Kenya',
-    'Next.js agency Kenya',
+    'web agency Nairobi',
     'Webmerchants',
   ],
-  authors: [{ name: 'Philip Ondieki' }],
+  authors: [{ name: 'Philip Ondieki', url: 'https://webmerchants.co.ke/about' }],
+  creator: 'Philip Ondieki',
+  metadataBase: new URL('https://webmerchants.co.ke'),
+  alternates: { canonical: 'https://webmerchants.co.ke' },
   openGraph: {
-    title: 'Webmerchants — Make You a Market Champion',
-    description:
-      'Premium web design, development and SEO for ambitious Kenyan brands.',
+    title: 'Webmerchants — Web Design Agency Nairobi Kenya',
+    description: 'Premium web design, development and SEO for Kenyan businesses.',
     url: 'https://webmerchants.co.ke',
     siteName: 'Webmerchants',
     locale: 'en_KE',
     type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Webmerchants — Web Design Agency Nairobi Kenya',
+    description: 'Premium web design, development and SEO for Kenyan businesses.',
   },
 }
 
@@ -52,7 +62,6 @@ export default function RootLayout({
       className={`${cormorantGaramond.variable} ${didactGothic.variable}`}
     >
       <body className="bg-wm-black font-body antialiased">
-        <CursorTracker />
         {children}
       </body>
     </html>

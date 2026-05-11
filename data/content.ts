@@ -1,20 +1,22 @@
 import type {
   NavLink,
   Service,
-  StackOption,
   Project,
   ProcessStep,
-  BizService,
   PricingTier,
   Testimonial,
+  TrustClient,
+  AddOn,
+  BlogPost,
+  CaseStudy,
 } from '@/types'
 
 export const navLinks: NavLink[] = [
-  { label: 'Services', href: '#services' },
-  { label: 'Our Work', href: '#work' },
-  { label: 'How We Work', href: '#process' },
-  { label: 'Pricing', href: '#pricing' },
-  { label: 'Contact', href: '#contact' },
+  { label: 'Services', href: '/services' },
+  { label: 'Our Work', href: '/work' },
+  { label: 'About', href: '/about' },
+  { label: 'Pricing', href: '/pricing' },
+  { label: 'Contact', href: '/contact' },
 ]
 
 export const services: Service[] = [
@@ -35,49 +37,6 @@ export const services: Service[] = [
     title: 'Search Engine Optimisation',
     description:
       'Precision-engineered visibility strategies that consistently place your brand at the forefront of every relevant search.',
-  },
-]
-
-export const stackOptions: StackOption[] = [
-  {
-    id: 'react',
-    label: 'React',
-    benefit: 'Perfect for fast, interactive web apps and rich user interfaces.',
-  },
-  {
-    id: 'nextjs',
-    label: 'Next.js',
-    benefit: 'Ideal for SEO-critical sites that need speed and scalability.',
-  },
-  {
-    id: 'wordpress',
-    label: 'WordPress',
-    benefit: 'Best for content-heavy sites with non-technical content editors.',
-  },
-  {
-    id: 'webflow',
-    label: 'Webflow',
-    benefit: 'Great for visually driven sites with rapid no-code deployment.',
-  },
-  {
-    id: 'vuejs',
-    label: 'Vue.js',
-    benefit: 'Excellent for lightweight, progressive web applications.',
-  },
-  {
-    id: 'laravel',
-    label: 'Laravel',
-    benefit: 'Powerful for complex backends, APIs and custom business logic.',
-  },
-  {
-    id: 'shopify',
-    label: 'Shopify',
-    benefit: 'The go-to platform for e-commerce stores of any size.',
-  },
-  {
-    id: 'custom',
-    label: 'Custom',
-    benefit: "When no off-the-shelf solution fits — we engineer from scratch.",
   },
 ]
 
@@ -138,33 +97,6 @@ export const processSteps: ProcessStep[] = [
   },
 ]
 
-export const bizServices: BizService[] = [
-  {
-    title: 'Name Search & Reservation',
-    price: 2500,
-    iconPath:
-      'M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z',
-  },
-  {
-    title: 'Business Registration (eCitizen)',
-    price: 8500,
-    iconPath:
-      'M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m2.25 0H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z',
-  },
-  {
-    title: 'KRA PIN Registration',
-    price: 1500,
-    iconPath:
-      'M15.75 5.25a3 3 0 013 3m3 0a6 6 0 01-7.029 5.912c-.563-.097-1.159.026-1.563.43L10.5 17.25H8.25v2.25H6v2.25H2.25v-2.818c0-.597.237-1.17.659-1.591l6.499-6.499c.404-.404.527-1 .43-1.563A6 6 0 1121.75 8.25z',
-  },
-  {
-    title: 'Business Permit Application',
-    price: 4000,
-    iconPath:
-      'M9 12.75L11.25 15 15 9.75M21 12c0 1.268-.63 2.39-1.593 3.068a3.745 3.745 0 01-1.043 3.296 3.745 3.745 0 01-3.296 1.043A3.745 3.745 0 0112 21c-1.268 0-2.39-.63-3.068-1.593a3.746 3.746 0 01-3.296-1.043 3.745 3.745 0 01-1.043-3.296A3.745 3.745 0 013 12c0-1.268.63-2.39 1.593-3.068a3.745 3.745 0 011.043-3.296 3.746 3.746 0 013.296-1.043A3.746 3.746 0 0112 3c1.268 0 2.39.63 3.068 1.593a3.746 3.746 0 013.296 1.043 3.746 3.746 0 011.043 3.296A3.745 3.745 0 0121 12z',
-  },
-]
-
 export const pricingTiers: PricingTier[] = [
   {
     name: 'Starter',
@@ -213,18 +145,144 @@ export const pricingTiers: PricingTier[] = [
 
 export const testimonials: Testimonial[] = [
   {
-    quote: 'Working with Webmerchants transformed our online presence completely.',
+    quote:
+      'Working with Webmerchants transformed our online presence. We were invisible online — now we get 3–5 enquiries a week directly from our website.',
     name: 'James M.',
     company: 'CEO · Dual Scope Engineering',
+    metric: '3–5 new enquiries per week',
   },
   {
-    quote: 'Our website now ranks #1 on Google Kenya for our core keywords.',
+    quote:
+      'Our website now ranks on page 1 of Google Kenya for our core research keywords. The SEO work Webmerchants did paid for itself in one client.',
     name: 'Amina K.',
     company: 'Director · Insight Afri Research',
+    metric: 'Page 1 on Google Kenya',
   },
   {
-    quote: 'The e-commerce platform they built handles hundreds of orders daily.',
+    quote:
+      'The M-Pesa e-commerce platform they built handles hundreds of orders per week without a single issue. Best investment we made in 2025.',
     name: 'David O.',
     company: 'Founder · Mkulima Sharp',
+    metric: 'Hundreds of orders weekly',
+  },
+]
+
+export const trustClients: TrustClient[] = [
+  { name: 'Insight Afri Research', url: 'https://www.insightafriresearch.com' },
+  { name: 'Dual Scope Engineering', url: 'https://dualscopeengineering.com' },
+  { name: 'Mkulima Sharp', url: 'https://www.mkulimasharp.com' },
+]
+
+export const addOns: AddOn[] = [
+  {
+    title: 'Domain Registration',
+    price: 'KSh 2,000/yr',
+    description: '.co.ke or .com domain secured for your brand.',
+  },
+  {
+    title: 'Hosting Setup',
+    price: 'KSh 5,000',
+    description: 'Vercel or cPanel deployment, SSL certificate included.',
+  },
+  {
+    title: 'Logo Design',
+    price: 'KSh 8,000',
+    description: 'Professional brand mark delivered in all formats.',
+  },
+  {
+    title: 'Monthly Maintenance',
+    price: 'KSh 5,000/mo',
+    description: 'Updates, security patches, uptime monitoring, monthly report.',
+  },
+]
+
+export const blogPosts: BlogPost[] = [
+  {
+    slug: 'why-nairobi-businesses-need-a-website',
+    title: 'Why Your Nairobi Business Is Losing Clients Without a Website',
+    excerpt:
+      'In 2026, over 60% of Kenyan consumers search online before buying. If your business is not online, you are invisible to your best customers.',
+    date: '2026-04-10',
+    readTime: '5 min',
+  },
+  {
+    slug: 'wordpress-vs-nextjs-kenya',
+    title: 'WordPress vs Next.js: What Is Right for Your Kenyan Business?',
+    excerpt:
+      'The platform you choose determines your SEO, speed, and long-term costs. Here is an honest breakdown for Kenyan SMEs.',
+    date: '2026-04-22',
+    readTime: '7 min',
+  },
+  {
+    slug: 'rank-number-one-google-kenya',
+    title: 'How to Rank #1 on Google Kenya in 2026',
+    excerpt:
+      'Local SEO for the Kenyan market is different. Google Maps ranking, Swahili keywords, and mobile-first indexing all play a role.',
+    date: '2026-05-01',
+    readTime: '8 min',
+  },
+  {
+    slug: 'mpesa-integration-ecommerce',
+    title: 'M-Pesa Integration: What Every Kenyan E-Commerce Site Needs',
+    excerpt:
+      'Over 90% of Kenyan online transactions happen via M-Pesa. Here is what you need to know before launching your store.',
+    date: '2026-05-08',
+    readTime: '6 min',
+  },
+  {
+    slug: 'website-mistakes-kenyan-smes',
+    title: '7 Website Mistakes Killing Kenyan SME Conversions',
+    excerpt:
+      'From slow load times on 3G to missing WhatsApp buttons — these are the mistakes costing Kenyan businesses real revenue.',
+    date: '2026-05-10',
+    readTime: '6 min',
+  },
+]
+
+export const caseStudies: CaseStudy[] = [
+  {
+    slug: 'insight-afri-research',
+    title: 'Insight Afri Research',
+    category: 'Research & Analytics',
+    stack: 'React · Firebase · Tailwind',
+    url: 'https://www.insightafriresearch.com',
+    imageUrl: 'https://placehold.co/800x500/0a0a0a/c9a84c?text=Insight+Afri+Research',
+    problem:
+      'Insight Afri had no digital presence. Research clients could not find them online and all leads came through word of mouth.',
+    solution:
+      'We built a full editorial website with project showcases, service pages and a lead capture system integrated with email notifications.',
+    result:
+      'Online enquiries increased by 300% within 60 days of launch. The site now ranks on page 1 for "research consultancy Nairobi".',
+    metric: '300% more enquiries',
+  },
+  {
+    slug: 'dual-scope-engineering',
+    title: 'Dual Scope Engineering',
+    category: 'Engineering & Construction',
+    stack: 'Next.js · Vercel · Gemini AI',
+    url: 'https://dualscopeengineering.com',
+    imageUrl: 'https://placehold.co/800x500/0a0a0a/c9a84c?text=Dual+Scope+Engineering',
+    problem:
+      'An outdated website was misrepresenting the firm to potential government and NGO clients.',
+    solution:
+      'Full redesign with Gemini AI chatbot integration, admin image gallery, and a Paystack donation system for CSR projects.',
+    result:
+      'Time-on-site increased by 4 minutes on average. Three government tender enquiries received within the first month.',
+    metric: '3 gov. tenders in month 1',
+  },
+  {
+    slug: 'mkulima-sharp',
+    title: 'Mkulima Sharp',
+    category: 'AgriTech E-Commerce',
+    stack: 'React · Firebase · M-Pesa',
+    url: 'https://www.mkulimasharp.com',
+    imageUrl: 'https://placehold.co/800x500/0a0a0a/c9a84c?text=Mkulima+Sharp',
+    problem:
+      'Farmers and agri-buyers had no reliable online platform for poultry products in Kenya.',
+    solution:
+      'Built a full e-commerce platform with M-Pesa Daraja integration, Google OAuth, admin CRUD system, and CI/CD pipeline.',
+    result:
+      'Platform now processes hundreds of orders per week. Featured as a top agritech product at GEGIS 2026.',
+    metric: 'Hundreds of orders weekly',
   },
 ]

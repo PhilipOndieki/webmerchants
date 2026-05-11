@@ -1,7 +1,9 @@
+import Link from 'next/link'
+
 export default function Hero(): React.JSX.Element {
   const stats = [
-    { number: '15+', label: 'Projects' },
-    { number: '3', label: 'Awards' },
+    { number: '15+', label: 'Projects Delivered' },
+    { number: '2 Weeks', label: 'Starter Delivery' },
     { number: '100%', label: 'Client Retention' },
   ]
 
@@ -17,7 +19,7 @@ export default function Hero(): React.JSX.Element {
           className="font-body text-gold text-xs tracking-[0.3em] uppercase mb-7 animate-fade-up"
           style={{ animationDelay: '0.1s' }}
         >
-          Make You a Market Champion
+          We Make You a Market Champion
         </p>
 
         {/* H1 */}
@@ -28,9 +30,9 @@ export default function Hero(): React.JSX.Element {
             animationDelay: '0.25s',
           }}
         >
-          We Build Websites That
+          Your Competitors Have a Website.
           <br />
-          <em className="text-gold not-italic">Win Business.</em>
+          <em className="text-gold italic">Yours Should Win.</em>
         </h1>
 
         {/* Subtitle */}
@@ -39,6 +41,12 @@ export default function Hero(): React.JSX.Element {
           style={{ animationDelay: '0.4s' }}
         >
           Premium web design, development and SEO for ambitious Kenyan brands.
+          Serving clients across all 47 counties, from Nairobi to Mombasa to Kisumu.
+        </p>
+
+        {/* County coverage */}
+        <p className="font-body text-[12px] text-gold uppercase tracking-[0.2em] mt-4 animate-fade-up" style={{ animationDelay: '0.45s' }}>
+          Nairobi · Mombasa · Kisumu · Nakuru · and 43 more counties
         </p>
 
         {/* CTAs */}
@@ -46,18 +54,18 @@ export default function Hero(): React.JSX.Element {
           className="flex flex-wrap items-center gap-5 mt-12 animate-fade-up"
           style={{ animationDelay: '0.55s' }}
         >
-          <a
-            href="#work"
+          <Link
+            href="/work"
             className="font-body text-xs tracking-[0.2em] uppercase bg-gold text-wm-black px-10 py-4 hover:bg-gold-light transition-colors duration-200"
           >
             View Our Work
-          </a>
-          <a
-            href="#process"
+          </Link>
+          <Link
+            href="/contact"
             className="font-body text-xs tracking-[0.2em] uppercase text-white hover:text-gold transition-colors duration-200"
           >
-            How We Work →
-          </a>
+            Get a Free Quote →
+          </Link>
         </div>
       </div>
 
@@ -74,16 +82,6 @@ export default function Hero(): React.JSX.Element {
             </p>
           </div>
         ))}
-      </div>
-
-      {/* Scroll indicator — bottom left */}
-      <div
-        className="absolute bottom-10 left-12 hidden lg:flex flex-col items-center gap-3 animate-fade-in"
-        style={{ animationDelay: '1.1s' }}
-        aria-hidden="true"
-      >
-        <div className="w-px h-12 bg-gold scroll-line" />
-        <p className="font-body text-[10px] text-wm-grey uppercase tracking-[0.3em]">Scroll</p>
       </div>
     </section>
   )

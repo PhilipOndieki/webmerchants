@@ -1,3 +1,4 @@
+import Link from 'next/link'
 import { pricingTiers } from '@/data/content'
 
 export default function Pricing(): React.JSX.Element {
@@ -39,13 +40,20 @@ export default function Pricing(): React.JSX.Element {
                 {tier.name}
               </h3>
 
+              {/* M-Pesa badge */}
+              <div className="flex items-center gap-2 mb-4">
+                <span className="font-body text-[10px] uppercase tracking-[0.15em] text-[#25D366] border border-[#25D366]/30 px-2 py-1">
+                  M-Pesa Accepted
+                </span>
+              </div>
+
               {/* Price */}
               <p className="font-display text-[40px] text-gold leading-none mb-8">
                 {tier.price}
               </p>
 
               {/* Features list */}
-              <ul className="flex flex-col gap-3 flex-1 mb-8">
+              <ul className="flex flex-col gap-3 flex-1 mb-4">
                 {tier.features.map((feature) => (
                   <li key={feature} className="flex items-start gap-3">
                     <span className="text-gold mt-0.5 flex-shrink-0" aria-hidden="true">
@@ -58,13 +66,20 @@ export default function Pricing(): React.JSX.Element {
                 ))}
               </ul>
 
+              {/* Payment plan note — Growth and Enterprise only */}
+              {(tier.featured || tier.name === 'Enterprise') && (
+                <p className="font-body text-[11px] text-wm-grey italic mb-4">
+                  Pay in 3 instalments — ask us how.
+                </p>
+              )}
+
               {/* CTA button */}
-              <a
-                href="#contact"
-                className="font-body text-xs tracking-widest uppercase bg-gold text-wm-black w-full py-4 hover:bg-gold-light transition-colors duration-200 text-center block"
+              <Link
+                href="/contact"
+                className="font-body text-xs tracking-widest uppercase bg-gold text-wm-black w-full py-4 hover:bg-gold-light transition-colors duration-200 text-center block mt-4"
               >
                 {tier.cta}
-              </a>
+              </Link>
             </div>
           ))}
         </div>

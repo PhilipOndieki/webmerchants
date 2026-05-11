@@ -1,9 +1,14 @@
+import Link from 'next/link'
 import { navLinks } from '@/data/content'
 
 export default function Footer(): React.JSX.Element {
   const quickLinks = [
-    { label: 'Home', href: '#' },
-    ...navLinks,
+    { label: 'Home', href: '/' },
+    { label: 'Services', href: '/services' },
+    { label: 'Our Work', href: '/work' },
+    { label: 'About', href: '/about' },
+    { label: 'Pricing', href: '/pricing' },
+    { label: 'Contact', href: '/contact' },
   ]
 
   return (
@@ -13,7 +18,7 @@ export default function Footer(): React.JSX.Element {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-8">
           {/* Col 1 — Brand */}
           <div>
-            <div className="flex items-center gap-1.5">
+            <Link href="/" className="flex items-center gap-1.5">
               <span className="font-display text-[22px] text-wm-off">W</span>
               <svg
                 width="6"
@@ -25,9 +30,9 @@ export default function Footer(): React.JSX.Element {
                 <circle cx="3" cy="3" r="3" fill="#C9A84C" />
               </svg>
               <span className="font-display text-[22px] text-wm-off">Webmerchants</span>
-            </div>
+            </Link>
             <p className="font-display text-[14px] italic text-wm-grey mt-4 leading-relaxed max-w-[200px]">
-              Make You a Market Champion
+              We Make You a Market Champion
             </p>
             <p className="font-body text-[12px] text-wm-grey mt-3 uppercase tracking-widest">
               Nairobi, Kenya
@@ -42,12 +47,12 @@ export default function Footer(): React.JSX.Element {
             <ul className="flex flex-col gap-3">
               {quickLinks.map((link) => (
                 <li key={link.href + link.label}>
-                  <a
+                  <Link
                     href={link.href}
                     className="font-body text-[13px] text-wm-grey hover:text-gold transition-colors duration-200"
                   >
                     {link.label}
-                  </a>
+                  </Link>
                 </li>
               ))}
             </ul>
@@ -92,7 +97,7 @@ export default function Footer(): React.JSX.Element {
         {/* Bottom bar */}
         <div className="border-t border-wm-border mt-12 pt-6 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
           <p className="font-body text-[12px] text-wm-grey">
-            © 2026 Webmerchants. Built by Philip Ondieki.
+            © 2025 Webmerchants.
           </p>
 
           {/* Social icons */}
