@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import { Cormorant_Garamond, Didact_Gothic } from 'next/font/google'
 import './globals.css'
+import { Analytics } from '@vercel/analytics/react'
 
 const cormorantGaramond = Cormorant_Garamond({
   subsets: ['latin'],
@@ -63,6 +64,7 @@ export default function RootLayout({
     >
       <body className="bg-wm-black font-body antialiased">
         {children}
+        <Analytics />
       </body>
     </html>
   )
