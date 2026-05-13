@@ -14,13 +14,6 @@ export default function Hero(): React.JSX.Element {
 
       {/* Main content */}
       <div className="relative z-10 px-6 lg:px-12 pt-24 pb-40">
-        {/* Eyebrow */}
-        <p
-          className="font-body text-gold text-xs tracking-[0.3em] uppercase mb-7 animate-fade-up"
-          style={{ animationDelay: '0.1s' }}
-        >
-          We Make You a Market Champion
-        </p>
 
         {/* H1 */}
         <h1
@@ -34,20 +27,6 @@ export default function Hero(): React.JSX.Element {
           <br />
           <em className="text-gold italic">Yours Should Win.</em>
         </h1>
-
-        {/* Subtitle */}
-        <p
-          className="font-body text-[15px] text-wm-grey max-w-lg leading-relaxed mt-7 animate-fade-up"
-          style={{ animationDelay: '0.4s' }}
-        >
-          Premium web design, development and SEO for ambitious Kenyan brands.
-          Serving clients across all 47 counties, from Nairobi to Mombasa to Kisumu.
-        </p>
-
-        {/* County coverage */}
-        <p className="font-body text-[12px] text-gold uppercase tracking-[0.2em] mt-4 animate-fade-up" style={{ animationDelay: '0.45s' }}>
-          Nairobi · Mombasa · Kisumu · Nakuru · and 43 more counties
-        </p>
 
         {/* CTAs */}
         <div

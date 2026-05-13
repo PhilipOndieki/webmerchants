@@ -36,23 +36,6 @@ export default function Pricing(): React.JSX.Element {
           ))}
         </div>
 
-        {/* Promise strip */}
-        <div className="border border-wm-border p-8 flex flex-wrap items-center justify-between gap-6 mb-12">
-          {[
-            'Fixed price — no hidden fees',
-            'Quote within 24 hours',
-            'Free consultation',
-            'M-Pesa accepted',
-          ].map((item) => (
-            <div key={item} className="flex items-center gap-3">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#C9A84C" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-                <path d="M5 13l4 4L19 7" />
-              </svg>
-              <span className="font-body text-[12px] text-wm-grey uppercase tracking-[0.12em]">{item}</span>
-            </div>
-          ))}
-        </div>
-
         {/* CTAs */}
         <div className="flex flex-wrap items-center gap-6">
           <Link
