@@ -74,8 +74,8 @@ export interface CaseStudy {
   stack?: string
   url: string
   imageUrl: string
-  problem: string
-  solution: string
-  result: string
+  problem?: string
+  solution?: string
+  result?: string
   metric: string
 }

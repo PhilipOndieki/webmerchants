@@ -178,17 +178,17 @@ export const addOns: AddOn[] = [
   },
   {
     title: 'Hosting Setup',
-    price: 'KSh 5,000',
+    price: 'KSh 6,000',
     description: 'Vercel or cPanel deployment, SSL certificate included.',
   },
   {
     title: 'Logo Design',
-    price: 'KSh 8,000',
+    price: 'KSh 2,000',
     description: 'Professional brand mark delivered in all formats.',
   },
   {
     title: 'Monthly Maintenance',
-    price: 'KSh 5,000/mo',
+    price: 'KSh 2,000/mo',
     description: 'Updates, security patches, uptime monitoring, monthly report.',
   },
 ]
@@ -241,9 +241,8 @@ export const caseStudies: CaseStudy[] = [
     slug: 'insight-afri-research',
     title: 'Insight Afri Research',
     category: 'Research & Analytics',
-    stack: 'React · Firebase · Tailwind',
     url: 'https://www.insightafriresearch.com',
-    imageUrl: 'https://placehold.co/800x500/0a0a0a/c9a84c?text=Insight+Afri+Research',
+    imageUrl: '/insightafriresearch.webp',
     problem:
       'Insight Afri had no digital presence. Research clients could not find them online and all leads came through word of mouth.',
     solution:
@@ -256,9 +255,8 @@ export const caseStudies: CaseStudy[] = [
     slug: 'dual-scope-engineering',
     title: 'Dual Scope Engineering',
     category: 'Engineering & Construction',
-    stack: 'Next.js · Vercel · Gemini AI',
     url: 'https://dualscopeengineering.com',
-    imageUrl: 'https://placehold.co/800x500/0a0a0a/c9a84c?text=Dual+Scope+Engineering',
+    imageUrl: '/dualscopeeng.webp',
     problem:
       'An outdated website was misrepresenting the firm to potential government and NGO clients.',
     solution:
@@ -271,9 +269,8 @@ export const caseStudies: CaseStudy[] = [
     slug: 'mkulima-sharp',
     title: 'Mkulima Sharp',
     category: 'AgriTech E-Commerce',
-    stack: 'React · Firebase · M-Pesa',
     url: 'https://www.mkulimasharp.com',
-    imageUrl: 'https://placehold.co/800x500/0a0a0a/c9a84c?text=Mkulima+Sharp',
+    imageUrl: '/mkulimasharp.webp',
     problem:
       'Farmers and agri-buyers had no reliable online platform for poultry products in Kenya.',
     solution:
