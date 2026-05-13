@@ -32,10 +32,20 @@ export default function ServicesPage(): React.JSX.Element {
   return (
     <>
       <Navbar />
-
+      
       {/* Hero */}
-      <section className="bg-wm-black py-24 lg:py-36 pt-36 lg:pt-48">
-        <div className="px-6 lg:px-12">
+      <section
+        className="relative min-h-screen flex items-end"
+        style={{
+          backgroundImage: 'url(https://images.unsplash.com/photo-1611348586840-ea9872d33411?w=1920&q=80)',
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+        }}
+      >
+        {/* Dark overlay */}
+        <div className="absolute inset-0 bg-wm-black/70" aria-hidden="true" />
+
+        <div className="relative z-10 px-6 lg:px-12 pb-24 pt-36">
           <h1 className="font-display text-[64px] font-light text-wm-off leading-tight max-w-3xl">
             Web Design Services Built for Kenyan Businesses.
           </h1>
@@ -45,7 +55,6 @@ export default function ServicesPage(): React.JSX.Element {
           </p>
         </div>
       </section>
-
       {/* Service I — Bespoke */}
       <section id="i" className="bg-wm-dark py-24 lg:py-36">
         <div className="px-6 lg:px-12">
