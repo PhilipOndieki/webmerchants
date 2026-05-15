@@ -119,7 +119,7 @@ export default function CaseStudyPage({
             <div>
               <p className="font-body text-[10px] text-gold uppercase tracking-[0.2em] mb-4">Stack</p>
               <div className="flex flex-wrap gap-2">
-                {cs.stack.split(' · ').map((tech) => (
+                {(cs.stack ?? '').split(' · ').filter(Boolean).map((tech) => (
                   <span
                     key={tech}
                     className="font-body text-[12px] text-wm-grey border border-wm-border px-3 py-1"
