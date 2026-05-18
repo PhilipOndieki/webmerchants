@@ -46,18 +46,21 @@ export const projects: Project[] = [
     url: 'https://www.insightafriresearch.com',
     category: 'Research & Analytics',
     imageUrl: '/insightafriresearch.webp',
+    metric: '300% more enquiries',
   },
   {
     title: 'Dual Scope Engineering',
     url: 'https://dualscopeengineering.com',
     category: 'Engineering & Construction',
     imageUrl: '/dualscopeeng.webp',
+    metric: '3 gov. tenders in month 1',
   },
   {
     title: 'Mkulima Sharp',
     url: 'https://www.mkulimasharp.com',
     category: 'AgriTech E-Commerce',
     imageUrl: '/mkulimasharp.webp',
+    metric: 'Hundreds of orders weekly',
   },
 ]
 

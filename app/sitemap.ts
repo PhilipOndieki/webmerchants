@@ -1,6 +1,3 @@
-// app/sitemap.ts — replace your existing sitemap.ts with this
-// Includes all blog article slugs for Google indexing
-
 import type { MetadataRoute } from 'next'
 import { blogArticles } from '@/data/blogContent'
 import { caseStudies } from '@/data/content'

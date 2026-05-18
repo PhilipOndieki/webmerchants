@@ -1,3 +1,5 @@
+// app/work/page.tsx
+
 import type { Metadata } from 'next'
 import Image from 'next/image'
 import Link from 'next/link'
@@ -17,8 +19,7 @@ export const metadata: Metadata = {
   alternates: { canonical: 'https://webmerchants.co.ke/work' },
   openGraph: {
     title: 'Our Work, Web Design Portfolio Kenya | Webmerchants Nairobi',
-    description:
-      'See the websites we have built for Kenyan businesses.',
+    description: 'See the websites we have built for Kenyan businesses.',
     url: 'https://webmerchants.co.ke/work',
     siteName: 'Webmerchants',
     locale: 'en_KE',
@@ -35,14 +36,12 @@ export default function WorkPage(): React.JSX.Element {
       <section
         className="relative min-h-screen flex items-end"
         style={{
-          backgroundImage: 'url(https://images.unsplash.com/photo-1486325212027-8081e485255e?w=1920&q=80)',
+          backgroundImage: 'url(/ourwork.webp)',
           backgroundSize: 'cover',
           backgroundPosition: 'center',
         }}
       >
-        {/* Dark overlay */}
         <div className="absolute inset-0 bg-wm-black/70" aria-hidden="true" />
-
         <div className="relative z-10 px-6 lg:px-12 pb-24 pt-36">
           <h1 className="font-display text-[64px] font-light text-wm-off leading-tight max-w-3xl">
             Websites That Work for Kenyan Businesses.
@@ -53,54 +52,46 @@ export default function WorkPage(): React.JSX.Element {
           </p>
         </div>
       </section>
+
       {/* Case studies */}
       <section className="bg-wm-dark py-24 lg:py-36">
         <div className="px-6 lg:px-12 flex flex-col gap-24">
           {caseStudies.map((cs, index) => (
-            <article key={cs.slug} className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
-              {/* Image — alternates left/right */}
-              <div className={`relative aspect-video overflow-hidden ${index % 2 !== 0 ? 'lg:order-2' : ''}`}>
+            <article key={cs.slug} className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+
+              {/* Image — clicks through to live site */}
+              <a
+                href={cs.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={`Visit ${cs.title} live site`}
+                className={`relative aspect-video overflow-hidden block group ${index % 2 !== 0 ? 'lg:order-2' : ''}`}
+              >
                 <Image
                   src={cs.imageUrl}
                   alt={cs.title}
                   fill
                   unoptimized
-                  className="object-cover"
+                  className="object-cover transition-transform duration-700 group-hover:scale-105"
                 />
-              </div>
+              </a>
 
               {/* Content */}
               <div className={index % 2 !== 0 ? 'lg:order-1' : ''}>
                 <span className="font-body text-[11px] text-gold uppercase tracking-[0.2em] block mb-4">
                   {cs.category}
                 </span>
-                <h2 className="font-display text-[40px] font-light text-white leading-tight mb-4">
+                <h2 className="font-display text-[40px] font-light text-white leading-tight mb-10">
                   {cs.title}
                 </h2>
-
-                <div className="flex flex-col gap-6 mb-10">
-                  {[
-                    { label: 'Problem', text: cs.problem },
-                    { label: 'Solution', text: cs.solution },
-                    { label: 'Result', text: cs.result },
-                  ].map((section) => (
-                    <div key={section.label}>
-                      <span className="font-body text-[10px] text-gold uppercase tracking-[0.2em] block mb-2">
-                        {section.label}
-                      </span>
-                      <p className="font-body text-[14px] text-wm-grey leading-relaxed">
-                        {section.text}
-                      </p>
-                    </div>
-                  ))}
-                </div>
 
                 {/* Metric */}
                 <div className="border border-gold p-6 mb-8 inline-block">
                   <p className="font-display text-[48px] text-gold leading-none">{cs.metric}</p>
                 </div>
 
-                <div className="flex flex-wrap gap-6">
+                {/* Visit live site */}
+                <div>
                   <a
                     href={cs.url}
                     target="_blank"
@@ -109,12 +100,6 @@ export default function WorkPage(): React.JSX.Element {
                   >
                     Visit live site →
                   </a>
-                  <Link
-                    href={`/work/${cs.slug}`}
-                    className="font-body text-[12px] uppercase tracking-[0.2em] text-gold hover:text-gold-light transition-colors duration-200"
-                  >
-                    Read case study →
-                  </Link>
                 </div>
               </div>
             </article>

@@ -37,7 +37,7 @@ export default function ServicesPage(): React.JSX.Element {
       <section
         className="relative min-h-screen flex items-end"
         style={{
-          backgroundImage: 'url(https://images.unsplash.com/photo-1611348586840-ea9872d33411?w=1920&q=80)',
+          backgroundImage: 'url(/services.webp)',
           backgroundSize: 'cover',
           backgroundPosition: 'center',
         }}

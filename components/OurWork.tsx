@@ -43,9 +43,14 @@ export default function OurWork(): React.JSX.Element {
                 <span className="font-body text-[11px] text-gold uppercase tracking-[0.2em] mb-3">
                   {project.category}
                 </span>
-                <h3 className="font-display text-[32px] text-white leading-tight mb-3">
+                <h3 className="font-display text-[32px] text-white leading-tight mb-6">
                   {project.title}
                 </h3>
+                <div className="border border-gold px-5 py-3 inline-block w-fit mb-6">
+                  <p className="font-display text-[36px] text-gold leading-none">
+                    {project.metric}
+                  </p>
+                </div>
                 <span className="font-body text-gold text-xs tracking-widest uppercase">
                   Visit site →
                 </span>

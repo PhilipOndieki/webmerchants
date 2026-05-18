@@ -42,7 +42,7 @@ export default function ContactPage(): React.JSX.Element {
       <section
         className="relative min-h-screen flex items-end"
         style={{
-          backgroundImage: 'url(https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=1920&q=80)',
+          backgroundImage: 'url(/contact.webp)',
           backgroundSize: 'cover',
           backgroundPosition: 'center',
         }}
@@ -215,29 +215,6 @@ export default function ContactPage(): React.JSX.Element {
           </div>
         </div>
       </section>
-
-      {/* Response promise strip */}
-      <section className="bg-wm-black border-y border-wm-border py-10">
-        <div className="px-6 lg:px-12">
-          <div className="flex flex-wrap items-center justify-center gap-8 lg:gap-16">
-            {[
-              'WhatsApp: 2 hours',
-              'Email: 24 hours',
-              'Quote: Free, always',
-            ].map((item) => (
-              <div key={item} className="flex items-center gap-3">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#C9A84C" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-                  <path d="M5 13l4 4L19 7" />
-                </svg>
-                <span className="font-body text-[12px] text-wm-grey uppercase tracking-[0.15em]">
-                  {item}
-                </span>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
       <Footer />
     </>
   )

@@ -1,6 +1,3 @@
-// app/blog/page.tsx — replace your existing app/blog/page.tsx with this
-// This version pulls from the full blogArticles data which includes content
-
 import type { Metadata } from 'next'
 import Link from 'next/link'
 import Navbar from '@/components/Navbar'

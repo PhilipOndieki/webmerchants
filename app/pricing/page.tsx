@@ -77,7 +77,7 @@ export default function PricingPage(): React.JSX.Element {
       <section
         className="relative min-h-screen flex items-end"
         style={{
-          backgroundImage: 'url(https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=1920&q=80)',
+          backgroundImage: 'url(/pricing.webp)',
           backgroundSize: 'cover',
           backgroundPosition: 'center',
         }}

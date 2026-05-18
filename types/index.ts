@@ -15,6 +15,7 @@ export interface Project {
   category: string
   stack?: string
   imageUrl: string
+  metric?: string
 }
 
 export interface ProcessStep {
@@ -77,5 +78,5 @@ export interface CaseStudy {
   problem?: string
   solution?: string
   result?: string
-  metric: string
+  metric?: string
 }
