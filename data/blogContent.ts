@@ -26,7 +26,7 @@ export const blogArticles: BlogArticle[] = [
     date: '2026-04-10',
     readTime: '5 min',
     category: 'Business Growth',
-    author: 'Philip Ondieki',
+    author: 'Dennis  Mlachake',
     content: [
       {
         type: 'paragraph',
@@ -150,7 +150,7 @@ export const blogArticles: BlogArticle[] = [
     date: '2026-04-22',
     readTime: '7 min',
     category: 'Web Technology',
-    author: 'Philip Ondieki',
+    author: 'Dennis  Mlachake',
     content: [
       {
         type: 'paragraph',
@@ -311,7 +311,7 @@ export const blogArticles: BlogArticle[] = [
     date: '2026-05-01',
     readTime: '8 min',
     category: 'SEO',
-    author: 'Philip Ondieki',
+    author: 'Dennis  Mlachake',
     content: [
       {
         type: 'paragraph',
@@ -469,7 +469,7 @@ export const blogArticles: BlogArticle[] = [
     date: '2026-05-08',
     readTime: '6 min',
     category: 'E-Commerce',
-    author: 'Philip Ondieki',
+    author: 'Dennis  Mlachake',
     content: [
       {
         type: 'paragraph',
@@ -603,7 +603,7 @@ export const blogArticles: BlogArticle[] = [
     date: '2026-05-10',
     readTime: '6 min',
     category: 'Conversion Optimisation',
-    author: 'Philip Ondieki',
+    author: 'Dennis  Mlachake',
     content: [
       {
         type: 'paragraph',
