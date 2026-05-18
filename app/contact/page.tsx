@@ -101,10 +101,10 @@ export default function ContactPage(): React.JSX.Element {
               <li className="flex items-start gap-4">
                 <span className="font-body text-gold text-[10px] uppercase tracking-widest mt-1 w-20 flex-shrink-0">Phone</span>
                 <a
-                  href="tel:+254703141296"
+                  href="tel:+254796422627"
                   className="font-body text-[14px] text-wm-grey hover:text-gold transition-colors"
                 >
-                  +254 703 141 296 (Piga simu)
+                  +254 796 422 627 (Piga simu)
                 </a>
               </li>
               <li className="flex items-start gap-4">

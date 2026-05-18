@@ -87,10 +87,10 @@ export default function Contact(): React.JSX.Element {
                   Phone
                 </span>
                 <a
-                  href="tel:+254703141296"
+                  href="tel:+254796422627"
                   className="font-body text-[14px] text-wm-grey hover:text-gold transition-colors"
                 >
-                  +254 703 141 296
+                  +254 796 422 627
                 </a>
               </li>
             </ul>

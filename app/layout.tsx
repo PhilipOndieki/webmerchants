@@ -24,7 +24,7 @@ export const metadata: Metadata = {
     template: '%s | Webmerchants Kenya',
   },
   description:
-    'Premium web design, development and SEO for Kenyan businesses. Based in Nairobi. Serving all 47 counties. M-Pesa accepted. WhatsApp: +254 703 141 296.',
+    'Premium web design, development and SEO for Kenyan businesses. Based in Nairobi. Serving all 47 counties. M-Pesa accepted. WhatsApp: +254 796 422 627.',
   keywords: [
     'web design Kenya',
     'web development Nairobi',

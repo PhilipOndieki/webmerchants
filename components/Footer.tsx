@@ -74,15 +74,15 @@ export default function Footer(): React.JSX.Element {
               </li>
               <li>
                 <a
-                  href="tel:+254703141296"
+                  href="tel:+254796422627"
                   className="font-body text-[13px] text-wm-grey hover:text-gold transition-colors duration-200"
                 >
-                  +254 703 141 296
+                  +254 796 422 627
                 </a>
               </li>
               <li>
                 <a
-                  href="https://wa.me/254703141296"
+                  href="https://wa.me/25479422627"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="font-body text-[13px] text-[#25D366] hover:opacity-70 transition-opacity"
