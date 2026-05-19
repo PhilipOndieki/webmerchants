@@ -1,53 +1,25 @@
 'use client'
 
-import { useState } from 'react'
-import type { ContactForm } from '@/types'
-
-const EMPTY_FORM: ContactForm = {
-  name: '',
-  email: '',
-  phone: '',
-  service: '',
-  budget: '',
-  message: '',
-}
-
 export default function Contact(): React.JSX.Element {
-  const [form, setForm] = useState<ContactForm>(EMPTY_FORM)
-  const [success, setSuccess] = useState<boolean>(false)
-
-  const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>,
-  ): void => {
-    const { name, value } = e.target as HTMLInputElement
-    setForm((prev) => ({ ...prev, [name]: value }))
-  }
-
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>): void => {
-    e.preventDefault()
-    setSuccess(true)
-  }
-
-  const inputClass =
-    'font-body text-sm text-white bg-wm-dark border border-wm-border px-4 py-3 w-full focus:border-gold transition-colors duration-200 outline-none placeholder:text-wm-grey'
-
   return (
     <section id="contact" className="bg-wm-black py-24 lg:py-36">
       <div className="px-6 lg:px-12">
-        {/* H2 */}
-        <h2 className="font-display text-[52px] font-light text-wm-off leading-tight mb-16">
+        <h2 className="font-display text-[52px] font-light text-wm-off leading-tight mb-4">
           Let&apos;s Build Something.
         </h2>
+        <p className="font-body text-[15px] text-wm-grey max-w-lg leading-relaxed mb-16">
+          Tell us about your business and we will tell you exactly what you need.
+          The fastest way to reach us is WhatsApp.
+        </p>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
-          {/* Left column — WhatsApp first, then contact info */}
-          <div>
-            {/* WhatsApp primary CTA */}
+          {/* Left — WhatsApp primary CTA */}
+          <div className="flex flex-col gap-8">
             <a
               href="https://wa.me/254796422627"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-3 bg-[#25D366] text-white font-body text-xs uppercase tracking-[0.15em] px-6 py-4 hover:opacity-90 transition-opacity w-full justify-center"
+              className="inline-flex items-center gap-3 bg-[#25D366] text-white font-body text-xs uppercase tracking-[0.15em] px-6 py-5 hover:opacity-90 transition-opacity w-full justify-center"
             >
               <svg
                 width="18"
@@ -60,8 +32,8 @@ export default function Contact(): React.JSX.Element {
               </svg>
               Chat on WhatsApp
             </a>
-            <p className="font-body text-[11px] text-wm-grey italic mt-3 mb-6">
-              Most clients reach us on WhatsApp first and we respond within 2 hours.
+            <p className="font-body text-[11px] text-wm-grey italic -mt-4">
+              Most clients reach us on WhatsApp first. We respond within 2 hours.
             </p>
 
             <ul className="flex flex-col gap-5">
@@ -96,101 +68,22 @@ export default function Contact(): React.JSX.Element {
             </ul>
           </div>
 
-          {/* Right column — form or success state */}
-          <div>
-            {success ? (
-              <div className="flex flex-col items-center justify-center h-full gap-8 py-12 text-center">
-                <svg
-                  width="48"
-                  height="48"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="#C9A84C"
-                  strokeWidth="1.5"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  aria-hidden="true"
-                >
-                  <path d="M5 13l4 4L19 7" />
-                </svg>
-                <h3 className="font-display text-[32px] text-white leading-snug max-w-sm">
-                  Thank you, {form.name}. We&apos;ll be in touch within 24 hours.
-                </h3>
-              </div>
-            ) : (
-              <form onSubmit={handleSubmit} noValidate className="flex flex-col gap-4">
-                <input
-                  type="text"
-                  name="name"
-                  value={form.name}
-                  onChange={handleChange}
-                  placeholder="Your Name"
-                  required
-                  className={inputClass}
-                />
-                <input
-                  type="email"
-                  name="email"
-                  value={form.email}
-                  onChange={handleChange}
-                  placeholder="Email Address"
-                  required
-                  className={inputClass}
-                />
-                <input
-                  type="tel"
-                  name="phone"
-                  value={form.phone}
-                  onChange={handleChange}
-                  placeholder="Phone Number"
-                  className={inputClass}
-                />
-                <select
-                  name="service"
-                  value={form.service}
-                  onChange={handleChange}
-                  required
-                  className={`${inputClass} ${form.service === '' ? 'text-wm-grey' : 'text-white'}`}
-                >
-                  <option value="" disabled>
-                    Select a Service
-                  </option>
-                  <option value="bespoke">Bespoke Website</option>
-                  <option value="modernisation">Website Modernisation</option>
-                  <option value="seo">SEO</option>
-                  <option value="other">Other</option>
-                </select>
-                <select
-                  name="budget"
-                  value={form.budget}
-                  onChange={handleChange}
-                  className={`${inputClass} ${form.budget === '' ? 'text-wm-grey' : 'text-white'}`}
-                >
-                  <option value="" disabled>
-                    Budget Range
-                  </option>
-                  <option value="starter">KSh 25,000 – 40,000</option>
-                  <option value="growth">KSh 40,000 – 80,000</option>
-                  <option value="enterprise">KSh 80,000+</option>
-                  <option value="unsure">Not sure yet</option>
-                </select>
-                <textarea
-                  name="message"
-                  value={form.message}
-                  onChange={handleChange}
-                  placeholder="Tell us about your project"
-                  rows={5}
-                  required
-                  className={`${inputClass} resize-none`}
-                />
-                <button
-                  type="submit"
-                  className="font-body text-sm tracking-widest uppercase bg-gold text-wm-black w-full py-4 hover:bg-gold-light transition-colors duration-200 mt-2"
-                >
-                  Send Message →
-                </button>
-              </form>
-            )}
+          {/* Right — quote CTA */}
+          <div className="border border-wm-border p-10 flex flex-col justify-between gap-10">
+            <div>
+              <p className="font-body text-[11px] text-gold uppercase tracking-[0.2em] mb-4">
+                Ready for a quote?
+              </p>
+              <p className="font-display text-[32px] font-light text-wm-off leading-snug">
+                Tell us what you need and we will send a detailed, fixed price within 24 hours.
+              </p>
+            </div>
+            <a
+              href="/pricing"
+              className="font-body text-xs tracking-[0.2em] uppercase bg-gold text-wm-black px-10 py-4 hover:bg-gold-light transition-colors duration-200 text-center"
+            >
+              Get My Custom Quote →
+            </a>
           </div>
         </div>
       </div>

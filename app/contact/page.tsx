@@ -1,39 +1,24 @@
-'use client'
-
-import { useState } from 'react'
 import Link from 'next/link'
 import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
-import type { ContactForm } from '@/types'
+import type { Metadata } from 'next'
 
-const EMPTY_FORM: ContactForm = {
-  name: '',
-  email: '',
-  phone: '',
-  service: '',
-  budget: '',
-  message: '',
+export const metadata: Metadata = {
+  title: 'Contact Webmerchants — Web Design Agency Nairobi',
+  description:
+    'Get in touch with Webmerchants. Based in Nairobi, Kenya. WhatsApp, email or phone. We respond same day.',
+  alternates: { canonical: 'https://webmerchants.co.ke/contact' },
+  openGraph: {
+    title: 'Contact Webmerchants — Web Design Agency Nairobi',
+    description: 'Get in touch with Webmerchants. Based in Nairobi, Kenya.',
+    url: 'https://webmerchants.co.ke/contact',
+    siteName: 'Webmerchants',
+    locale: 'en_KE',
+    type: 'website',
+  },
 }
 
 export default function ContactPage(): React.JSX.Element {
-  const [form, setForm] = useState<ContactForm>(EMPTY_FORM)
-  const [success, setSuccess] = useState<boolean>(false)
-
-  const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>,
-  ): void => {
-    const { name, value } = e.target as HTMLInputElement
-    setForm((prev) => ({ ...prev, [name]: value }))
-  }
-
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>): void => {
-    e.preventDefault()
-    setSuccess(true)
-  }
-
-  const inputClass =
-    'font-body text-sm text-white bg-wm-black border border-wm-border px-4 py-3 w-full focus:border-gold transition-colors duration-200 outline-none placeholder:text-wm-grey'
-
   return (
     <>
       <Navbar />
@@ -47,24 +32,24 @@ export default function ContactPage(): React.JSX.Element {
           backgroundPosition: 'center',
         }}
       >
-        {/* Dark overlay */}
         <div className="absolute inset-0 bg-wm-black/70" aria-hidden="true" />
-
         <div className="relative z-10 px-6 lg:px-12 pb-24 pt-36">
           <h1 className="font-display text-[64px] font-light text-wm-off leading-tight max-w-3xl">
             Let&apos;s Build Your Website.
           </h1>
           <p className="font-body text-[15px] text-wm-grey max-w-xl leading-relaxed mt-8">
             Tell us about your business and we will tell you exactly what you need.
-            Most clients reach us on WhatsApp, we respond within 2 hours.
+            The fastest way to reach us is WhatsApp. We respond same day.
           </p>
         </div>
       </section>
+
       {/* Contact grid */}
       <section className="bg-wm-dark py-24 lg:py-36">
         <div className="px-6 lg:px-12 grid grid-cols-1 lg:grid-cols-2 gap-16">
-          {/* Left — WhatsApp first */}
-          <div>
+
+          {/* Left — WhatsApp first, then contact details */}
+          <div className="flex flex-col gap-8">
             <a
               href="https://wa.me/254796422627?text=Hi%20Webmerchants%2C%20I%27d%20like%20to%20discuss%20a%20web%20project."
               target="_blank"
@@ -76,18 +61,10 @@ export default function ContactPage(): React.JSX.Element {
               </svg>
               Chat on WhatsApp →
             </a>
-            <p className="font-body text-[11px] text-wm-grey italic mt-3 mb-8 text-center">
-              Most clients reach us on WhatsApp first, Karibu
+            <p className="font-body text-[11px] text-wm-grey italic -mt-4">
+              Most clients reach us on WhatsApp first. Karibu.
             </p>
 
-            {/* Divider */}
-            <div className="flex items-center gap-4 mb-8">
-              <div className="flex-1 h-px bg-gold/30" />
-              <span className="font-body text-[11px] text-wm-grey uppercase tracking-[0.2em]">OR</span>
-              <div className="flex-1 h-px bg-gold/30" />
-            </div>
-
-            {/* Contact details */}
             <ul className="flex flex-col gap-5">
               <li className="flex items-start gap-4">
                 <span className="font-body text-gold text-[10px] uppercase tracking-widest mt-1 w-20 flex-shrink-0">Email</span>
@@ -104,7 +81,7 @@ export default function ContactPage(): React.JSX.Element {
                   href="tel:+254796422627"
                   className="font-body text-[14px] text-wm-grey hover:text-gold transition-colors"
                 >
-                  +254 796 422 627 (Piga simu)
+                  +254 796 422 627
                 </a>
               </li>
               <li className="flex items-start gap-4">
@@ -113,108 +90,34 @@ export default function ContactPage(): React.JSX.Element {
               </li>
               <li className="flex items-start gap-4">
                 <span className="font-body text-gold text-[10px] uppercase tracking-widest mt-1 w-20 flex-shrink-0">Hours</span>
-                <span className="font-body text-[14px] text-wm-grey">Mon–Fri 8am–6pm</span>
+                <span className="font-body text-[14px] text-wm-grey">Mon to Fri 8am to 6pm </span>
               </li>
             </ul>
           </div>
 
-          {/* Right — form */}
-          <div>
-            <p className="font-body text-[11px] text-wm-grey italic mb-6">
-              Prefer to talk? WhatsApp us instead.
-            </p>
-            {success ? (
-              <div className="flex flex-col items-center justify-center gap-8 py-12 text-center">
-                <svg
-                  width="48"
-                  height="48"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="#C9A84C"
-                  strokeWidth="1.5"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  aria-hidden="true"
-                >
-                  <path d="M5 13l4 4L19 7" />
-                </svg>
-                <h2 className="font-display text-[32px] text-white leading-snug max-w-sm">
-                  Thank you, {form.name}. We&apos;ll be in touch within 24 hours.
-                </h2>
-              </div>
-            ) : (
-              <form onSubmit={handleSubmit} noValidate className="flex flex-col gap-4">
-                <input
-                  type="text"
-                  name="name"
-                  value={form.name}
-                  onChange={handleChange}
-                  placeholder="Your Name"
-                  required
-                  className={inputClass}
-                />
-                <input
-                  type="email"
-                  name="email"
-                  value={form.email}
-                  onChange={handleChange}
-                  placeholder="Email Address"
-                  required
-                  className={inputClass}
-                />
-                <input
-                  type="tel"
-                  name="phone"
-                  value={form.phone}
-                  onChange={handleChange}
-                  placeholder="Phone Number"
-                  className={inputClass}
-                />
-                <select
-                  name="service"
-                  value={form.service}
-                  onChange={handleChange}
-                  required
-                  className={`${inputClass} ${form.service === '' ? 'text-wm-grey' : 'text-white'}`}
-                >
-                  <option value="" disabled>Select a Service</option>
-                  <option value="bespoke">Bespoke Website</option>
-                  <option value="modernisation">Website Modernisation</option>
-                  <option value="seo">SEO</option>
-                  <option value="other">Other</option>
-                </select>
-                <select
-                  name="budget"
-                  value={form.budget}
-                  onChange={handleChange}
-                  className={`${inputClass} ${form.budget === '' ? 'text-wm-grey' : 'text-white'}`}
-                >
-                  <option value="" disabled>Budget Range</option>
-                  <option value="starter">KSh 25,000 – 40,000</option>
-                  <option value="growth">KSh 40,000 – 80,000</option>
-                  <option value="enterprise">KSh 80,000+</option>
-                  <option value="unsure">Not sure yet</option>
-                </select>
-                <textarea
-                  name="message"
-                  value={form.message}
-                  onChange={handleChange}
-                  placeholder="Tell us about your project"
-                  rows={5}
-                  required
-                  className={`${inputClass} resize-none`}
-                />
-                <button
-                  type="submit"
-                  className="font-body text-sm tracking-widest uppercase bg-gold text-wm-black w-full py-4 hover:bg-gold-light transition-colors duration-200 mt-2"
-                >
-                  Send Enquiry →
-                </button>
-              </form>
-            )}
+          {/* Right — quote prompt */}
+          <div className="border border-wm-border p-10 flex flex-col justify-between gap-10">
+            <div>
+              <p className="font-body text-[11px] text-gold uppercase tracking-[0.2em] mb-6">
+                Need a quote?
+              </p>
+              <p className="font-display text-[36px] font-light text-wm-off leading-snug mb-6">
+                Fill in your project requirements and we will send a detailed, fixed price within 24 hours.
+              </p>
+              <p className="font-body text-[14px] text-wm-grey leading-relaxed">
+                No obligation. No pressure. If the quote works for you, we start. If not, no hard feelings.
+              </p>
+            </div>
+            <Link
+              href="/pricing"
+              className="font-body text-xs tracking-[0.2em] uppercase bg-gold text-wm-black px-10 py-4 hover:bg-gold-light transition-colors duration-200 text-center"
+            >
+              Get My Custom Quote →
+            </Link>
           </div>
         </div>
       </section>
+
       <Footer />
     </>
   )
