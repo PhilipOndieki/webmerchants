@@ -189,7 +189,7 @@ export default function AboutPage(): React.JSX.Element {
               },
               {
                 title: 'Local-first',
-                desc: 'Every site is optimised for Kenyan users — mobile, 3G, Google Kenya, M-Pesa. Always.',
+                desc: 'Every site is optimised for Kenyan users. Mobile, 3G, Google Kenya, M-Pesa. Always.',
               },
               {
                 title: 'Craftsmanship',
@@ -235,7 +235,7 @@ export default function AboutPage(): React.JSX.Element {
           </p>
           <div className="flex flex-wrap items-center justify-center gap-6">
             <a
-              href="https://wa.me/254703141296"
+              href="https://wa.me/254796422627"
               target="_blank"
               rel="noopener noreferrer"
               className="font-body text-xs tracking-[0.2em] uppercase bg-[#25D366] text-white px-10 py-4 hover:opacity-90 transition-opacity"

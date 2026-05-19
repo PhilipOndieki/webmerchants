@@ -148,7 +148,7 @@ export default function BlogPage(): React.JSX.Element {
             Want us to write about a specific topic?
           </p>
           <a
-            href="https://wa.me/254703141296?text=Hi%20Webmerchants%2C%20I%27d%20like%20to%20suggest%20a%20blog%20topic."
+            href="https://wa.me/254796422627?text=Hi%20Webmerchants%2C%20I%27d%20like%20to%20suggest%20a%20blog%20topic."
             target="_blank"
             rel="noopener noreferrer"
             className="font-body text-xs tracking-[0.2em] uppercase text-gold hover:text-gold-light transition-colors duration-200"

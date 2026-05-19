@@ -342,11 +342,11 @@ export default function ServicesPage(): React.JSX.Element {
             Not Sure Which Service You Need?
           </h2>
           <p className="font-body text-[15px] text-wm-grey max-w-lg mx-auto leading-relaxed mb-10">
-            Tell us about your business on WhatsApp — we&apos;ll tell you exactly what we recommend and why.
+            Tell us about your business on WhatsApp and we&apos;ll tell you exactly what we recommend and why.
           </p>
           <div className="flex flex-wrap items-center justify-center gap-6">
             <a
-              href="https://wa.me/254703141296"
+              href="https://wa.me/254796422627"
               target="_blank"
               rel="noopener noreferrer"
               className="font-body text-xs tracking-[0.2em] uppercase bg-[#25D366] text-white px-10 py-4 hover:opacity-90 transition-opacity"

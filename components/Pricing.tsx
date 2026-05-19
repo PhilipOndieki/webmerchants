@@ -45,7 +45,7 @@ export default function Pricing(): React.JSX.Element {
             Get My Custom Quote →
           </Link>
           <a
-            href="https://wa.me/254703141296?text=Hi%20Webmerchants%2C%20I%27d%20like%20to%20discuss%20pricing%20for%20my%20website."
+            href="https://wa.me/254796422627?text=Hi%20Webmerchants%2C%20I%27d%20like%20to%20discuss%20pricing%20for%20my%20website."
             target="_blank"
             rel="noopener noreferrer"
             className="font-body text-xs tracking-[0.2em] uppercase text-[#25D366] hover:opacity-80 transition-opacity"

@@ -40,7 +40,7 @@ export default function Hero(): React.JSX.Element {
             View Our Work
           </Link>
           <Link
-            href="/contact"
+            href="/pricing"
             className="font-body text-xs tracking-[0.2em] uppercase text-white hover:text-gold transition-colors duration-200"
           >
             Get a Free Quote →

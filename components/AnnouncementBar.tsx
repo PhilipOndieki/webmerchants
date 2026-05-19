@@ -12,7 +12,7 @@ export default function AnnouncementBar(): React.JSX.Element | null {
       <p className="font-body text-[11px] uppercase tracking-[0.2em] text-center">
         Now accepting new clients for Q3 2026 —{' '}
         <a
-          href="https://wa.me/254703141296"
+          href="https://wa.me/254796422627"
           target="_blank"
           rel="noopener noreferrer"
           className="underline underline-offset-2 hover:opacity-70 transition-opacity"

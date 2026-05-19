@@ -46,7 +46,7 @@ export const projects: Project[] = [
     title: 'Insight Afri Research',
     url: 'https://www.insightafriresearch.com',
     category: 'Research & Analytics',
-    imageUrl: '/insightafriresearch.webp',
+    imageUrl: '/insightafriresearch2.png',
     metric: '300% more enquiries',
   },
   {
@@ -246,7 +246,7 @@ export const caseStudies: CaseStudy[] = [
     title: 'Insight Afri Research',
     category: 'Research & Analytics',
     url: 'https://www.insightafriresearch.com',
-    imageUrl: '/insightafriresearch.webp',
+    imageUrl: '/insightafriresearch2.png',
     problem:
       'Insight Afri had no digital presence. Research clients could not find them online and all leads came through word of mouth.',
     solution:

@@ -181,7 +181,7 @@ export default function BlogArticlePage({
               </p>
               <div className="flex flex-wrap gap-4">
                 <a
-                  href="https://wa.me/254703141296"
+                  href="https://wa.me/254796422627"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="font-body text-xs tracking-[0.2em] uppercase bg-[#25D366] text-white px-8 py-4 hover:opacity-90 transition-opacity"
@@ -251,7 +251,7 @@ export default function BlogArticlePage({
 
             {/* WhatsApp CTA */}
             <a
-              href="https://wa.me/254703141296"
+              href="https://wa.me/254796422627"
               target="_blank"
               rel="noopener noreferrer"
               className="border border-[#25D366] p-6 hover:bg-[#25D366]/5 transition-colors duration-200 group"

@@ -63,10 +63,10 @@ export default function Navbar(): React.JSX.Element {
           ))}
         </ul>
 
-        {/* Desktop CTA */}
+        {/* Desktop CTA — now goes to /pricing */}
         <div className="hidden lg:flex items-center">
           <Link
-            href="/contact"
+            href="/pricing"
             className="font-body text-[11px] uppercase tracking-[0.18em] bg-gold text-wm-black px-6 py-3 hover:bg-gold-light transition-colors duration-200"
           >
             Get a Quote
@@ -113,7 +113,7 @@ export default function Navbar(): React.JSX.Element {
             ))}
           </ul>
           <Link
-            href="/contact"
+            href="/pricing"
             onClick={closeMenu}
             className="mt-12 font-body text-[11px] uppercase tracking-[0.2em] bg-gold text-wm-black px-8 py-4 hover:bg-gold-light transition-colors"
           >

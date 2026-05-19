@@ -41,9 +41,46 @@ const FEATURE_OPTIONS = [
   'Custom animations',
 ]
 
+const PAGES_LABELS: Record<string, string> = {
+  '1-5': '1 to 5 pages',
+  '6-10': '6 to 10 pages',
+  '11-20': '11 to 20 pages',
+  '20+': '20+ pages',
+  'unsure': 'Not sure yet',
+}
+
+const TIMELINE_LABELS: Record<string, string> = {
+  'asap': 'As soon as possible',
+  '2-4weeks': '2 to 4 weeks',
+  '1-2months': '1 to 2 months',
+  'flexible': 'Flexible',
+}
+
+function buildWhatsAppMessage(form: QuoteForm): string {
+  const lines: string[] = []
+
+  lines.push('Hi Webmerchants! I would like to request a custom quote.')
+  lines.push('')
+  lines.push(`*Name:* ${form.name}`)
+  lines.push(`*Email:* ${form.email}`)
+  if (form.phone) lines.push(`*Phone:* ${form.phone}`)
+  if (form.businessType) lines.push(`*Business type:* ${form.businessType}`)
+  if (form.pages) lines.push(`*Pages needed:* ${PAGES_LABELS[form.pages] ?? form.pages}`)
+  if (form.features.length > 0) {
+    lines.push(`*Features required:*`)
+    form.features.forEach((f) => lines.push(`  - ${f}`))
+  }
+  if (form.timeline) lines.push(`*Preferred timeline:* ${TIMELINE_LABELS[form.timeline] ?? form.timeline}`)
+  if (form.message) {
+    lines.push('')
+    lines.push(`*Additional notes:* ${form.message}`)
+  }
+
+  return lines.join('\n')
+}
+
 export default function PricingPage(): React.JSX.Element {
   const [form, setForm] = useState<QuoteForm>(EMPTY_FORM)
-  const [success, setSuccess] = useState<boolean>(false)
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>,
@@ -63,7 +100,9 @@ export default function PricingPage(): React.JSX.Element {
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>): void => {
     e.preventDefault()
-    setSuccess(true)
+    const message = buildWhatsAppMessage(form)
+    const encoded = encodeURIComponent(message)
+    window.open(`https://wa.me/254796422627?text=${encoded}`, '_blank')
   }
 
   const inputClass =
@@ -100,13 +139,14 @@ export default function PricingPage(): React.JSX.Element {
           </p>
         </div>
       </section>
+
       {/* How it works */}
       <section className="bg-wm-dark py-16 border-y border-wm-border">
         <div className="px-6 lg:px-12">
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
             {[
               { step: '01', title: 'Submit Your Requirements', body: 'Fill in the form below. Tell us about your business, the pages you need, and any special features.' },
-              { step: '02', title: 'We Review and Quote', body: 'Our team reviews your brief and sends a detailed fixed-price quote within 24 hours.' },
+              { step: '02', title: 'Sent Straight to WhatsApp', body: 'Clicking the button opens WhatsApp with your requirements pre-filled. Hit send and we receive it instantly.' },
               { step: '03', title: 'You Decide', body: 'No obligation. If the quote works for you, we start. If not, no hard feelings the consultation is free.' },
             ].map((item) => (
               <div key={item.step} className="flex gap-6">
@@ -122,7 +162,7 @@ export default function PricingPage(): React.JSX.Element {
       </section>
 
       {/* Quote form */}
-      <section className="bg-wm-black py-24 lg:py-36">
+      <section id="quote-form" className="bg-wm-black py-24 lg:py-36">
         <div className="px-6 lg:px-12 grid grid-cols-1 lg:grid-cols-2 gap-16">
 
           {/* Left — context */}
@@ -136,8 +176,8 @@ export default function PricingPage(): React.JSX.Element {
             <div className="flex flex-col gap-0">
               {[
                 { label: 'Number of pages', desc: 'A 5-page brochure site is a different scope from a 20-page platform with user accounts.' },
-                { label: 'Features & integrations', desc: 'M-Pesa, booking systems, e-commerce, admin dashboards — each adds real development time.' },
-                { label: 'Design complexity', desc: 'A clean corporate site differs from a heavily animated landing page. Both are valid — they just cost differently.' },
+                { label: 'Features & integrations', desc: 'M-Pesa, booking systems, e-commerce, admin dashboards; each adds real development time.' },
+                { label: 'Design complexity', desc: 'A clean corporate site differs from a heavily animated landing page. Both are valid but they just cost differently.' },
                 { label: 'Timeline', desc: 'Rush delivery is possible but costs more. Flexible timelines get you a better rate.' },
               ].map((item) => (
                 <div key={item.label} className="border-t border-wm-border py-5">
@@ -149,149 +189,140 @@ export default function PricingPage(): React.JSX.Element {
             <div className="mt-10 border border-wm-border p-6">
               <p className="font-body text-[12px] text-wm-grey uppercase tracking-[0.15em] mb-2">Prefer to talk first?</p>
               <a
-                href="https://wa.me/254703141296?text=Hi%20Webmerchants%2C%20I%27d%20like%20to%20discuss%20pricing%20for%20my%20website."
+                href="https://wa.me/254796422627?text=Hi%20Webmerchants%2C%20I%27d%20like%20to%20discuss%20pricing%20for%20my%20website."
                 target="_blank"
                 rel="noopener noreferrer"
                 className="font-body text-[14px] text-[#25D366] hover:opacity-80 transition-opacity"
               >
-                WhatsApp us — we respond within 2 hours →
+                WhatsApp us, we respond within 2 hours
               </a>
             </div>
           </div>
 
           {/* Right — form */}
           <div>
-            {success ? (
-              <div className="flex flex-col items-center justify-center gap-8 py-16 text-center">
-                <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#C9A84C" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-                  <path d="M5 13l4 4L19 7" />
-                </svg>
-                <h2 className="font-display text-[32px] text-white leading-snug max-w-sm">
-                  Got it, {form.name}. Your quote will be with you within 24 hours.
-                </h2>
-                <p className="font-body text-[14px] text-wm-grey">
-                  We will reach you on <span className="text-gold">{form.email}</span>
-                  {form.phone ? ` or ${form.phone}` : ''}.
-                </p>
-              </div>
-            ) : (
-              <form onSubmit={handleSubmit} noValidate className="flex flex-col gap-4">
-                <input
-                  type="text"
-                  name="name"
-                  value={form.name}
-                  onChange={handleChange}
-                  placeholder="Your Name"
-                  required
-                  className={inputClass}
-                />
-                <input
-                  type="email"
-                  name="email"
-                  value={form.email}
-                  onChange={handleChange}
-                  placeholder="Email Address"
-                  required
-                  className={inputClass}
-                />
-                <input
-                  type="tel"
-                  name="phone"
-                  value={form.phone}
-                  onChange={handleChange}
-                  placeholder="Phone / WhatsApp Number"
-                  className={inputClass}
-                />
-                <input
-                  type="text"
-                  name="businessType"
-                  value={form.businessType}
-                  onChange={handleChange}
-                  placeholder="Type of Business (e.g. Law firm, Restaurant, NGO)"
-                  required
-                  className={inputClass}
-                />
-                <select
-                  name="pages"
-                  value={form.pages}
-                  onChange={handleChange}
-                  required
-                  className={`${inputClass} ${form.pages === '' ? 'text-wm-grey' : 'text-white'}`}
-                >
-                  <option value="" disabled>Approximate Number of Pages</option>
-                  <option value="1-5">1 to 5 pages</option>
-                  <option value="6-10">6 to 10 pages</option>
-                  <option value="11-20">11 to 20 pages</option>
-                  <option value="20+">20+ pages</option>
-                  <option value="unsure">Not sure yet</option>
-                </select>
+            <p className="font-body text-[13px] text-wm-grey leading-relaxed mb-6">
+              Fill in your requirements below. Clicking the button opens WhatsApp with everything pre-filled, just hit send.
+            </p>
+            <form onSubmit={handleSubmit} noValidate className="flex flex-col gap-4">
+              <input
+                type="text"
+                name="name"
+                value={form.name}
+                onChange={handleChange}
+                placeholder="Your Name"
+                required
+                className={inputClass}
+              />
+              <input
+                type="email"
+                name="email"
+                value={form.email}
+                onChange={handleChange}
+                placeholder="Email Address"
+                required
+                className={inputClass}
+              />
+              <input
+                type="tel"
+                name="phone"
+                value={form.phone}
+                onChange={handleChange}
+                placeholder="Phone / WhatsApp Number"
+                className={inputClass}
+              />
+              <input
+                type="text"
+                name="businessType"
+                value={form.businessType}
+                onChange={handleChange}
+                placeholder="Type of Business (e.g. Law firm, Restaurant, NGO)"
+                required
+                className={inputClass}
+              />
+              <select
+                name="pages"
+                value={form.pages}
+                onChange={handleChange}
+                required
+                className={`${inputClass} ${form.pages === '' ? 'text-wm-grey' : 'text-white'}`}
+              >
+                <option value="" disabled>Approximate Number of Pages</option>
+                <option value="1-5">1 to 5 pages</option>
+                <option value="6-10">6 to 10 pages</option>
+                <option value="11-20">11 to 20 pages</option>
+                <option value="20+">20+ pages</option>
+                <option value="unsure">Not sure yet</option>
+              </select>
 
-                {/* Feature checkboxes */}
-                <div className="border border-wm-border p-4">
-                  <p className="font-body text-[11px] text-wm-grey uppercase tracking-[0.15em] mb-4">
-                    Features You Need (select all that apply)
-                  </p>
-                  <div className="grid grid-cols-1 gap-3">
-                    {FEATURE_OPTIONS.map((feature) => (
-                      <label key={feature} className="flex items-center gap-3 cursor-pointer group">
-                        <span
-                          onClick={() => toggleFeature(feature)}
-                          className={`w-4 h-4 border flex-shrink-0 flex items-center justify-center transition-colors duration-150 cursor-pointer ${
-                            form.features.includes(feature)
-                              ? 'border-gold bg-gold'
-                              : 'border-wm-border group-hover:border-gold'
-                          }`}
-                        >
-                          {form.features.includes(feature) && (
-                            <svg width="10" height="8" viewBox="0 0 10 8" fill="none" aria-hidden="true">
-                              <path d="M1 4l3 3 5-6" stroke="#0A0A0A" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-                            </svg>
-                          )}
-                        </span>
-                        <span
-                          onClick={() => toggleFeature(feature)}
-                          className="font-body text-[13px] text-wm-grey group-hover:text-white transition-colors duration-150"
-                        >
-                          {feature}
-                        </span>
-                      </label>
-                    ))}
-                  </div>
+              {/* Feature checkboxes */}
+              <div className="border border-wm-border p-4">
+                <p className="font-body text-[11px] text-wm-grey uppercase tracking-[0.15em] mb-4">
+                  Features You Need (select all that apply)
+                </p>
+                <div className="grid grid-cols-1 gap-3">
+                  {FEATURE_OPTIONS.map((feature) => (
+                    <label key={feature} className="flex items-center gap-3 cursor-pointer group">
+                      <span
+                        onClick={() => toggleFeature(feature)}
+                        className={`w-4 h-4 border flex-shrink-0 flex items-center justify-center transition-colors duration-150 cursor-pointer ${
+                          form.features.includes(feature)
+                            ? 'border-gold bg-gold'
+                            : 'border-wm-border group-hover:border-gold'
+                        }`}
+                      >
+                        {form.features.includes(feature) && (
+                          <svg width="10" height="8" viewBox="0 0 10 8" fill="none" aria-hidden="true">
+                            <path d="M1 4l3 3 5-6" stroke="#0A0A0A" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                          </svg>
+                        )}
+                      </span>
+                      <span
+                        onClick={() => toggleFeature(feature)}
+                        className="font-body text-[13px] text-wm-grey group-hover:text-white transition-colors duration-150"
+                      >
+                        {feature}
+                      </span>
+                    </label>
+                  ))}
                 </div>
+              </div>
 
-                <select
-                  name="timeline"
-                  value={form.timeline}
-                  onChange={handleChange}
-                  className={`${inputClass} ${form.timeline === '' ? 'text-wm-grey' : 'text-white'}`}
-                >
-                  <option value="" disabled>Preferred Timeline</option>
-                  <option value="asap">As soon as possible</option>
-                  <option value="2-4weeks">2 to 4 weeks</option>
-                  <option value="1-2months">1 to 2 months</option>
-                  <option value="flexible">Flexible</option>
-                </select>
+              <select
+                name="timeline"
+                value={form.timeline}
+                onChange={handleChange}
+                className={`${inputClass} ${form.timeline === '' ? 'text-wm-grey' : 'text-white'}`}
+              >
+                <option value="" disabled>Preferred Timeline</option>
+                <option value="asap">As soon as possible</option>
+                <option value="2-4weeks">2 to 4 weeks</option>
+                <option value="1-2months">1 to 2 months</option>
+                <option value="flexible">Flexible</option>
+              </select>
 
-                <textarea
-                  name="message"
-                  value={form.message}
-                  onChange={handleChange}
-                  placeholder="Anything else we should know about your project?"
-                  rows={4}
-                  className={`${inputClass} resize-none`}
-                />
+              <textarea
+                name="message"
+                value={form.message}
+                onChange={handleChange}
+                placeholder="Anything else we should know about your project?"
+                rows={4}
+                className={`${inputClass} resize-none`}
+              />
 
-                <button
-                  type="submit"
-                  className="font-body text-sm tracking-widest uppercase bg-gold text-wm-black w-full py-4 hover:bg-gold-light transition-colors duration-200 mt-2"
-                >
-                  Request My Custom Quote →
-                </button>
-                <p className="font-body text-[11px] text-wm-grey text-center italic">
-                  Free. No obligation. Response within 24 hours.
-                </p>
-              </form>
-            )}
+              <button
+                type="submit"
+                className="font-body text-sm tracking-widest uppercase bg-[#25D366] text-white w-full py-4 hover:opacity-90 transition-opacity mt-2 flex items-center justify-center gap-3"
+              >
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                  <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
+                </svg>
+                Send My Quote Request on WhatsApp →
+              </button>
+              <p className="font-body text-[11px] text-wm-grey text-center italic">
+                Opens WhatsApp with your details pre-filled. Free. No obligation.
+              </p>
+            </form>
           </div>
         </div>
       </section>
@@ -316,50 +347,6 @@ export default function PricingPage(): React.JSX.Element {
                 <p className="font-body text-[13px] text-wm-grey leading-relaxed">{addon.description}</p>
               </div>
             ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Comparison table */}
-      <section className="bg-wm-black py-24 lg:py-36">
-        <div className="px-6 lg:px-12">
-          <p className="font-body text-gold text-xs tracking-[0.28em] uppercase mb-4">Why Not Just Use Wix?</p>
-          <h2 className="font-display text-[40px] font-light text-wm-off leading-tight mb-4">
-            Webmerchants vs The Alternatives.
-          </h2>
-          <p className="font-body text-[15px] text-wm-grey max-w-2xl leading-relaxed mb-16">
-            An honest comparison. We are not the cheapest option — we are the best value for Kenyan businesses that want real results.
-          </p>
-          <div className="overflow-x-auto">
-            <table className="w-full border-collapse">
-              <thead>
-                <tr className="border-b border-wm-border">
-                  <th className="font-body text-[11px] text-wm-grey uppercase tracking-[0.15em] text-left py-4 pr-8">Feature</th>
-                  <th className="font-body text-[11px] text-wm-grey uppercase tracking-[0.15em] text-left py-4 px-4">DIY (Wix/Squarespace)</th>
-                  <th className="font-body text-[11px] text-wm-grey uppercase tracking-[0.15em] text-left py-4 px-4">Cheap Freelancer</th>
-                  <th className="font-body text-[11px] text-gold uppercase tracking-[0.15em] text-left py-4 px-4 border-b-2 border-gold">Webmerchants</th>
-                </tr>
-              </thead>
-              <tbody>
-                {[
-                  ['Google Kenya optimisation', 'Limited', 'Maybe', '✓ Included'],
-                  ['Mobile-first for Kenya', 'Generic', 'Varies', '✓ Always'],
-                  ['M-Pesa integration', 'No', 'Extra', '✓ Available'],
-                  ['WhatsApp support', 'No', 'No', '✓ Included'],
-                  ['SEO setup', 'Basic', 'Varies', '✓ Full setup'],
-                  ['Source code ownership', 'No', 'Varies', '✓ You own it'],
-                  ['Post-launch support', 'None', 'Unlikely', '✓ 30 days free'],
-                  ['Custom quote per project', 'No', 'Inconsistent', '✓ Always'],
-                ].map((row, i) => (
-                  <tr key={row[0]} className={`border-b border-wm-border ${i % 2 === 0 ? 'bg-wm-black' : 'bg-wm-dark'}`}>
-                    <td className="font-body text-[14px] text-wm-grey py-4 pr-8">{row[0]}</td>
-                    <td className="font-body text-[14px] text-wm-grey py-4 px-4">{row[1]}</td>
-                    <td className="font-body text-[14px] text-wm-grey py-4 px-4">{row[2]}</td>
-                    <td className="font-body text-[14px] text-gold py-4 px-4">{row[3]}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
           </div>
         </div>
       </section>
@@ -422,7 +409,7 @@ export default function PricingPage(): React.JSX.Element {
           </p>
           <div className="flex flex-wrap items-center justify-center gap-6">
             <a
-              href="https://wa.me/254703141296"
+              href="https://wa.me/254796422627"
               target="_blank"
               rel="noopener noreferrer"
               className="font-body text-xs tracking-[0.2em] uppercase bg-[#25D366] text-white px-10 py-4 hover:opacity-90 transition-opacity"

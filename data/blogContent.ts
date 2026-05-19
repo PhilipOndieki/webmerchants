@@ -599,7 +599,7 @@ export const blogArticles: BlogArticle[] = [
     slug: 'website-mistakes-kenyan-smes',
     title: '7 Website Mistakes Killing Kenyan SME Conversions',
     excerpt:
-      'From slow load times on 3G to missing WhatsApp buttons — these are the mistakes costing Kenyan businesses real revenue.',
+      'From slow load times on 3G to missing WhatsApp buttons. These are the mistakes costing Kenyan businesses real revenue.',
     date: '2026-05-10',
     readTime: '6 min',
     category: 'Conversion Optimisation',

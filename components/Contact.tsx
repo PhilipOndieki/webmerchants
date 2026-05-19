@@ -44,7 +44,7 @@ export default function Contact(): React.JSX.Element {
           <div>
             {/* WhatsApp primary CTA */}
             <a
-              href="https://wa.me/254703141296"
+              href="https://wa.me/254796422627"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-3 bg-[#25D366] text-white font-body text-xs uppercase tracking-[0.15em] px-6 py-4 hover:opacity-90 transition-opacity w-full justify-center"
@@ -61,7 +61,7 @@ export default function Contact(): React.JSX.Element {
               Chat on WhatsApp
             </a>
             <p className="font-body text-[11px] text-wm-grey italic mt-3 mb-6">
-              Most clients reach us on WhatsApp first — we respond within 2 hours.
+              Most clients reach us on WhatsApp first and we respond within 2 hours.
             </p>
 
             <ul className="flex flex-col gap-5">
