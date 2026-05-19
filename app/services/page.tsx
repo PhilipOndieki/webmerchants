@@ -93,7 +93,7 @@ export default function ServicesPage(): React.JSX.Element {
             on word-of-mouth. NGOs and organisations that need a credible online home.
           </p>
 
-          <p className="font-display text-[24px] text-gold mb-8">Starting from KSh 25,000</p>
+          <p className="font-display text-[24px] text-gold mb-8">Starting from KSh 35,000</p>
 
           <Link
             href="/contact"
