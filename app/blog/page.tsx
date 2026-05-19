@@ -6,14 +6,14 @@ import Footer from '@/components/Footer'
 import { blogArticles } from '@/data/blogContent'
 
 export const metadata: Metadata = {
-  title: 'Web Design & SEO Insights for Kenyan Businesses | Webmerchants Blog',
+  title: 'Website Design & SEO Tips for Kenyan Businesses | Webmerchants Blog',
   description:
-    'Expert articles on web design, SEO, and digital marketing for Kenyan businesses and SMEs. Written by Philip Ondieki, Nairobi based full stack developer.',
+    'Practical website design and SEO advice for Kenyan businesses. Written by Webmerchants, a website design company based in Nairobi.',
   keywords: [
-    'web design blog Kenya',
+    'website design Kenya',
+    'web design company Kenya',
     'SEO tips Kenya',
-    'digital marketing Kenya',
-    'website advice Nairobi',
+    'website designer near me Nairobi',
   ],
   alternates: { canonical: 'https://webmerchants.co.ke/blog' },
   openGraph: {

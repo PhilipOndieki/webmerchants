@@ -1,23 +1,11 @@
+'use client'
+
 import Link from 'next/link'
 import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
-import type { Metadata } from 'next'
 import { WA_BASE_URL, WA_DEFAULT_MESSAGE, CONTACT_EMAIL, CONTACT_PHONE, CONTACT_PHONE_RAW } from '@/constants'
+import { trackWhatsAppClick } from '@/lib/analytics'
 
-export const metadata: Metadata = {
-  title: 'Contact Webmerchants — Web Design Agency Nairobi',
-  description:
-    'Get in touch with Webmerchants. Based in Nairobi, Kenya. WhatsApp, email or phone. We respond same day.',
-  alternates: { canonical: 'https://webmerchants.co.ke/contact' },
-  openGraph: {
-    title: 'Contact Webmerchants — Web Design Agency Nairobi',
-    description: 'Get in touch with Webmerchants. Based in Nairobi, Kenya.',
-    url: 'https://webmerchants.co.ke/contact',
-    siteName: 'Webmerchants',
-    locale: 'en_KE',
-    type: 'website',
-  },
-}
 
 export default function ContactPage(): React.JSX.Element {
   return (
@@ -55,6 +43,7 @@ export default function ContactPage(): React.JSX.Element {
               href={`${WA_BASE_URL}?text=${WA_DEFAULT_MESSAGE}`}
               target="_blank"
               rel="noopener noreferrer"
+              onClick={() => trackWhatsAppClick('contact_page')}
               className="flex items-center justify-center gap-3 bg-[#25D366] text-white font-body text-xs uppercase tracking-[0.15em] px-6 py-5 hover:opacity-90 transition-opacity w-full"
             >
               <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">

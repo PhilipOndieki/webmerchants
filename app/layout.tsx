@@ -20,18 +20,20 @@ const didactGothic = Didact_Gothic({
 
 export const metadata: Metadata = {
   title: {
-    default: 'Webmerchants — Web Design Agency Nairobi Kenya',
+    default: 'Webmerchants — Website Design Company Nairobi Kenya',
     template: '%s | Webmerchants Kenya',
   },
   description:
-    'Premium web design, development and SEO for Kenyan businesses. Based in Nairobi. Serving all 47 counties. M-Pesa accepted. WhatsApp: +254 796 422 627.',
+    'Looking for a website designer near you in Nairobi? Webmerchants builds fast, affordable websites for Kenyan businesses. M-Pesa accepted. Serving all 47 counties. WhatsApp: +254 796 422 627.',
   keywords: [
-    'web design Kenya',
-    'web development Nairobi',
+    'website design company Nairobi',
+    'website designer near me Nairobi',
+    'web design company Kenya',
     'website design Kenya',
-    'SEO Kenya',
-    'web agency Nairobi',
-    'Webmerchants',
+    'web design Nairobi',
+    'affordable website design Kenya',
+    'website developer Nairobi',
+    'web designer near me Kenya',
   ],
   authors: [{ name: 'Philip Ondieki', url: 'https://webmerchants.co.ke/about' }],
   creator: 'Philip Ondieki',

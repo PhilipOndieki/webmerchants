@@ -1,6 +1,10 @@
+'use client'
+
+
 import Link from 'next/link'
 import { navLinks } from '@/data/content'
 import { WA_BASE_URL, CONTACT_EMAIL, CONTACT_PHONE, CONTACT_PHONE_RAW } from '@/constants'
+import { trackWhatsAppClick } from '@/lib/analytics'
 
 export default function Footer(): React.JSX.Element {
   const quickLinks = [
@@ -86,6 +90,7 @@ export default function Footer(): React.JSX.Element {
                   href={WA_BASE_URL}
                   target="_blank"
                   rel="noopener noreferrer"
+                  onClick={() => trackWhatsAppClick('footer')}
                   className="font-body text-[13px] text-[#25D366] hover:opacity-70 transition-opacity"
                 >
                   WhatsApp Us

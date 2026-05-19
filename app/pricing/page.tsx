@@ -6,6 +6,7 @@ import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
 import { addOns } from '@/data/content'
 import { WA_NUMBER, WA_BASE_URL, WA_PRICING_MESSAGE } from '@/constants'
+import { trackWhatsAppClick, trackQuoteFormStart, trackQuoteFormSubmit } from '@/lib/analytics'
 
 interface QuoteForm {
   name: string
@@ -167,6 +168,7 @@ function buildWhatsAppMessage(form: QuoteForm): string {
 export default function PricingPage(): React.JSX.Element {
   const [form, setForm] = useState<QuoteForm>(EMPTY_FORM)
   const [errors, setErrors] = useState<FormErrors>({})
+  const [formStarted, setFormStarted] = useState<boolean>(false)
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>,
@@ -175,6 +177,11 @@ export default function PricingPage(): React.JSX.Element {
     setForm((prev) => ({ ...prev, [name]: value }))
     if (errors[name as keyof FormErrors]) {
       setErrors((prev) => ({ ...prev, [name]: undefined }))
+    }
+    // Track the first time the user touches any field
+    if (!formStarted) {
+      setFormStarted(true)
+      trackQuoteFormStart()
     }
   }
 
@@ -205,8 +212,10 @@ export default function PricingPage(): React.JSX.Element {
     }
 
     // Layer 1: Sanitise, build, send
+    trackQuoteFormSubmit()
     const message = buildWhatsAppMessage(form)
     const encoded = encodeURIComponent(message)
+    trackWhatsAppClick('pricing_page_form')
     window.open(`https://wa.me/${WA_NUMBER}?text=${encoded}`, '_blank')
   }
 
@@ -297,6 +306,7 @@ export default function PricingPage(): React.JSX.Element {
                 href={`${WA_BASE_URL}?text=${WA_PRICING_MESSAGE}`}
                 target="_blank"
                 rel="noopener noreferrer"
+                onClick={() => trackWhatsAppClick('pricing_page_sidebar')}
                 className="font-body text-[14px] text-[#25D366] hover:opacity-80 transition-opacity"
               >
                 WhatsApp us. We respond within 2 hours →
@@ -604,6 +614,7 @@ export default function PricingPage(): React.JSX.Element {
               href={WA_BASE_URL}
               target="_blank"
               rel="noopener noreferrer"
+              onClick={() => trackWhatsAppClick('pricing_page_cta')}
               className="font-body text-xs tracking-[0.2em] uppercase bg-[#25D366] text-white px-10 py-4 hover:opacity-90 transition-opacity"
             >
               Chat on WhatsApp →

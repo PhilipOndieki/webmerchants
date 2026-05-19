@@ -8,13 +8,13 @@ import Footer from '@/components/Footer'
 import { caseStudies } from '@/data/content'
 
 export const metadata: Metadata = {
-  title: 'Our Work, Web Design Portfolio Kenya | Webmerchants Nairobi',
+  title: 'Website Design Portfolio Kenya | Webmerchants Nairobi',
   description:
-    'See the websites we have built for Kenyan businesses, from AgriTech e-commerce to engineering firms and research institutions. Based in Nairobi, Kenya.',
+    'See websites we have built for Kenyan businesses. A website design company based in Nairobi serving clients across all 47 counties.',
   keywords: [
+    'website design company Nairobi',
     'web design portfolio Kenya',
-    'website examples Nairobi',
-    'Kenyan web agency portfolio',
+    'website examples Kenya',
   ],
   alternates: { canonical: 'https://webmerchants.co.ke/work' },
   openGraph: {

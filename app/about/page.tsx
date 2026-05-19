@@ -5,15 +5,14 @@ import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
 
 export const metadata: Metadata = {
-  title: 'About Webmerchants — Web Design Agency Nairobi | Built in Kenya',
+  title: 'About Webmerchants — Website Design Company Based in Nairobi Kenya',
   description:
-    'Webmerchants is a team of Kenyan web developers and digital strategists based in Nairobi. 2x hackathon winners. CS50 certified. Building websites that win business for Kenyan brands across all 47 counties.',
+    'Webmerchants is a website design company based in Nairobi. A team of Kenyan web developers. 2x hackathon winners. Building websites for Kenyan brands across all 47 counties.',
   keywords: [
-    'web developer Nairobi',
-    'Webmerchants team',
-    'Kenyan web agency',
-    'full stack developers Kenya',
-    'web design studio Nairobi',
+    'website design company Nairobi',
+    'web designers near me Nairobi',
+    'website designer Nairobi',
+    'web design company Kenya',
   ],
   alternates: { canonical: 'https://webmerchants.co.ke/about' },
   openGraph: {

@@ -1,6 +1,7 @@
 'use client'
 
 import { WA_BASE_URL, CONTACT_EMAIL, CONTACT_PHONE, CONTACT_PHONE_RAW } from '@/constants'
+import { trackWhatsAppClick } from '@/lib/analytics'
 
 export default function Contact(): React.JSX.Element {
   return (
@@ -21,6 +22,7 @@ export default function Contact(): React.JSX.Element {
               href={WA_BASE_URL}
               target="_blank"
               rel="noopener noreferrer"
+              onClick={() => trackWhatsAppClick('homepage_contact_section')}
               className="inline-flex items-center gap-3 bg-[#25D366] text-white font-body text-xs uppercase tracking-[0.15em] px-6 py-5 hover:opacity-90 transition-opacity w-full justify-center"
             >
               <svg
