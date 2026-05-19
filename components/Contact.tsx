@@ -1,5 +1,7 @@
 'use client'
 
+import { WA_BASE_URL, CONTACT_EMAIL, CONTACT_PHONE, CONTACT_PHONE_RAW } from '@/constants'
+
 export default function Contact(): React.JSX.Element {
   return (
     <section id="contact" className="bg-wm-black py-24 lg:py-36">
@@ -16,7 +18,7 @@ export default function Contact(): React.JSX.Element {
           {/* Left — WhatsApp primary CTA */}
           <div className="flex flex-col gap-8">
             <a
-              href="https://wa.me/254796422627"
+              href={WA_BASE_URL}
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-3 bg-[#25D366] text-white font-body text-xs uppercase tracking-[0.15em] px-6 py-5 hover:opacity-90 transition-opacity w-full justify-center"
@@ -48,10 +50,10 @@ export default function Contact(): React.JSX.Element {
                   Email
                 </span>
                 <a
-                  href="mailto:info@webmerchants.co.ke"
+                  href={`mailto:${CONTACT_EMAIL}`}
                   className="font-body text-[14px] text-wm-grey hover:text-gold transition-colors"
                 >
-                  info@webmerchants.co.ke
+                  {CONTACT_EMAIL}
                 </a>
               </li>
               <li className="flex items-start gap-4">
@@ -59,10 +61,10 @@ export default function Contact(): React.JSX.Element {
                   Phone
                 </span>
                 <a
-                  href="tel:+254796422627"
+                  href={`tel:${CONTACT_PHONE_RAW}`}
                   className="font-body text-[14px] text-wm-grey hover:text-gold transition-colors"
                 >
-                  +254 796 422 627
+                  {CONTACT_PHONE}
                 </a>
               </li>
             </ul>

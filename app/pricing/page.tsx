@@ -5,6 +5,7 @@ import Link from 'next/link'
 import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
 import { addOns } from '@/data/content'
+import { WA_NUMBER, WA_BASE_URL, WA_PRICING_MESSAGE } from '@/constants'
 
 interface QuoteForm {
   name: string
@@ -102,7 +103,7 @@ export default function PricingPage(): React.JSX.Element {
     e.preventDefault()
     const message = buildWhatsAppMessage(form)
     const encoded = encodeURIComponent(message)
-    window.open(`https://wa.me/254796422627?text=${encoded}`, '_blank')
+    window.open(`https://wa.me/${WA_NUMBER}?text=${encoded}`, '_blank')
   }
 
   const inputClass =
@@ -176,8 +177,8 @@ export default function PricingPage(): React.JSX.Element {
             <div className="flex flex-col gap-0">
               {[
                 { label: 'Number of pages', desc: 'A 5-page brochure site is a different scope from a 20-page platform with user accounts.' },
-                { label: 'Features & integrations', desc: 'M-Pesa, booking systems, e-commerce, admin dashboards; each adds real development time.' },
-                { label: 'Design complexity', desc: 'A clean corporate site differs from a heavily animated landing page. Both are valid but they just cost differently.' },
+                { label: 'Features & integrations', desc: 'M-Pesa, booking systems, e-commerce, admin dashboards — each adds real development time.' },
+                { label: 'Design complexity', desc: 'A clean corporate site differs from a heavily animated landing page. Both are valid — they just cost differently.' },
                 { label: 'Timeline', desc: 'Rush delivery is possible but costs more. Flexible timelines get you a better rate.' },
               ].map((item) => (
                 <div key={item.label} className="border-t border-wm-border py-5">
@@ -189,12 +190,12 @@ export default function PricingPage(): React.JSX.Element {
             <div className="mt-10 border border-wm-border p-6">
               <p className="font-body text-[12px] text-wm-grey uppercase tracking-[0.15em] mb-2">Prefer to talk first?</p>
               <a
-                href="https://wa.me/254796422627?text=Hi%20Webmerchants%2C%20I%27d%20like%20to%20discuss%20pricing%20for%20my%20website."
+                href={`${WA_BASE_URL}?text=${WA_PRICING_MESSAGE}`}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="font-body text-[14px] text-[#25D366] hover:opacity-80 transition-opacity"
               >
-                WhatsApp us, we respond within 2 hours
+                WhatsApp us — we respond within 2 hours →
               </a>
             </div>
           </div>
@@ -202,7 +203,7 @@ export default function PricingPage(): React.JSX.Element {
           {/* Right — form */}
           <div>
             <p className="font-body text-[13px] text-wm-grey leading-relaxed mb-6">
-              Fill in your requirements below. Clicking the button opens WhatsApp with everything pre-filled, just hit send.
+              Fill in your requirements below. Clicking the button opens WhatsApp with everything pre-filled — just hit send.
             </p>
             <form onSubmit={handleSubmit} noValidate className="flex flex-col gap-4">
               <input
@@ -351,6 +352,50 @@ export default function PricingPage(): React.JSX.Element {
         </div>
       </section>
 
+      {/* Comparison table */}
+      <section className="bg-wm-black py-24 lg:py-36">
+        <div className="px-6 lg:px-12">
+          <p className="font-body text-gold text-xs tracking-[0.28em] uppercase mb-4">Why Not Just Use Wix?</p>
+          <h2 className="font-display text-[40px] font-light text-wm-off leading-tight mb-4">
+            Webmerchants vs The Alternatives.
+          </h2>
+          <p className="font-body text-[15px] text-wm-grey max-w-2xl leading-relaxed mb-16">
+            An honest comparison. We are not the cheapest option — we are the best value for Kenyan businesses that want real results.
+          </p>
+          <div className="overflow-x-auto">
+            <table className="w-full border-collapse">
+              <thead>
+                <tr className="border-b border-wm-border">
+                  <th className="font-body text-[11px] text-wm-grey uppercase tracking-[0.15em] text-left py-4 pr-8">Feature</th>
+                  <th className="font-body text-[11px] text-wm-grey uppercase tracking-[0.15em] text-left py-4 px-4">DIY (Wix/Squarespace)</th>
+                  <th className="font-body text-[11px] text-wm-grey uppercase tracking-[0.15em] text-left py-4 px-4">Cheap Freelancer</th>
+                  <th className="font-body text-[11px] text-gold uppercase tracking-[0.15em] text-left py-4 px-4 border-b-2 border-gold">Webmerchants</th>
+                </tr>
+              </thead>
+              <tbody>
+                {[
+                  ['Google Kenya optimisation', 'Limited', 'Maybe', '✓ Included'],
+                  ['Mobile-first for Kenya', 'Generic', 'Varies', '✓ Always'],
+                  ['M-Pesa integration', 'No', 'Extra', '✓ Available'],
+                  ['WhatsApp support', 'No', 'No', '✓ Included'],
+                  ['SEO setup', 'Basic', 'Varies', '✓ Full setup'],
+                  ['Source code ownership', 'No', 'Varies', '✓ You own it'],
+                  ['Post-launch support', 'None', 'Unlikely', '✓ 30 days free'],
+                  ['Custom quote per project', 'No', 'Inconsistent', '✓ Always'],
+                ].map((row, i) => (
+                  <tr key={row[0]} className={`border-b border-wm-border ${i % 2 === 0 ? 'bg-wm-black' : 'bg-wm-dark'}`}>
+                    <td className="font-body text-[14px] text-wm-grey py-4 pr-8">{row[0]}</td>
+                    <td className="font-body text-[14px] text-wm-grey py-4 px-4">{row[1]}</td>
+                    <td className="font-body text-[14px] text-wm-grey py-4 px-4">{row[2]}</td>
+                    <td className="font-body text-[14px] text-gold py-4 px-4">{row[3]}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
       {/* FAQ */}
       <section className="bg-wm-dark py-24 lg:py-36">
         <div className="px-6 lg:px-12">
@@ -409,7 +454,7 @@ export default function PricingPage(): React.JSX.Element {
           </p>
           <div className="flex flex-wrap items-center justify-center gap-6">
             <a
-              href="https://wa.me/254796422627"
+              href={WA_BASE_URL}
               target="_blank"
               rel="noopener noreferrer"
               className="font-body text-xs tracking-[0.2em] uppercase bg-[#25D366] text-white px-10 py-4 hover:opacity-90 transition-opacity"

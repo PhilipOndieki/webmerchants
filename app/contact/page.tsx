@@ -2,6 +2,7 @@ import Link from 'next/link'
 import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
 import type { Metadata } from 'next'
+import { WA_BASE_URL, WA_DEFAULT_MESSAGE, CONTACT_EMAIL, CONTACT_PHONE, CONTACT_PHONE_RAW } from '@/constants'
 
 export const metadata: Metadata = {
   title: 'Contact Webmerchants — Web Design Agency Nairobi',
@@ -51,7 +52,7 @@ export default function ContactPage(): React.JSX.Element {
           {/* Left — WhatsApp first, then contact details */}
           <div className="flex flex-col gap-8">
             <a
-              href="https://wa.me/254796422627?text=Hi%20Webmerchants%2C%20I%27d%20like%20to%20discuss%20a%20web%20project."
+              href={`${WA_BASE_URL}?text=${WA_DEFAULT_MESSAGE}`}
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center justify-center gap-3 bg-[#25D366] text-white font-body text-xs uppercase tracking-[0.15em] px-6 py-5 hover:opacity-90 transition-opacity w-full"
@@ -69,19 +70,19 @@ export default function ContactPage(): React.JSX.Element {
               <li className="flex items-start gap-4">
                 <span className="font-body text-gold text-[10px] uppercase tracking-widest mt-1 w-20 flex-shrink-0">Email</span>
                 <a
-                  href="mailto:info@webmerchants.co.ke"
+                  href={`mailto:${CONTACT_EMAIL}`}
                   className="font-body text-[14px] text-wm-grey hover:text-gold transition-colors"
                 >
-                  info@webmerchants.co.ke
+                  {CONTACT_EMAIL}
                 </a>
               </li>
               <li className="flex items-start gap-4">
                 <span className="font-body text-gold text-[10px] uppercase tracking-widest mt-1 w-20 flex-shrink-0">Phone</span>
                 <a
-                  href="tel:+254796422627"
+                  href={`tel:${CONTACT_PHONE_RAW}`}
                   className="font-body text-[14px] text-wm-grey hover:text-gold transition-colors"
                 >
-                  +254 796 422 627
+                  {CONTACT_PHONE}
                 </a>
               </li>
               <li className="flex items-start gap-4">
@@ -90,7 +91,7 @@ export default function ContactPage(): React.JSX.Element {
               </li>
               <li className="flex items-start gap-4">
                 <span className="font-body text-gold text-[10px] uppercase tracking-widest mt-1 w-20 flex-shrink-0">Hours</span>
-                <span className="font-body text-[14px] text-wm-grey">Mon to Fri 8am to 6pm </span>
+                <span className="font-body text-[14px] text-wm-grey">Mon to Fri 8am to 6pm · Sat 9am to 1pm</span>
               </li>
             </ul>
           </div>

@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
+import { WA_BASE_URL } from '@/constants'
 import { notFound } from 'next/navigation'
 import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
@@ -181,7 +182,7 @@ export default function BlogArticlePage({
               </p>
               <div className="flex flex-wrap gap-4">
                 <a
-                  href="https://wa.me/254796422627"
+                  href={WA_BASE_URL}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="font-body text-xs tracking-[0.2em] uppercase bg-[#25D366] text-white px-8 py-4 hover:opacity-90 transition-opacity"
