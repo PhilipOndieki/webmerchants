@@ -16,6 +16,15 @@ interface QuoteForm {
   features: string[]
   timeline: string
   message: string
+  honeypot: string
+}
+
+interface FormErrors {
+  name?: string
+  email?: string
+  phone?: string
+  businessType?: string
+  pages?: string
 }
 
 const EMPTY_FORM: QuoteForm = {
@@ -27,6 +36,7 @@ const EMPTY_FORM: QuoteForm = {
   features: [],
   timeline: '',
   message: '',
+  honeypot: '',
 }
 
 const FEATURE_OPTIONS = [
@@ -57,37 +67,115 @@ const TIMELINE_LABELS: Record<string, string> = {
   'flexible': 'Flexible',
 }
 
+// ─── Layer 1: Strip dangerous characters ──────────────────────────────────────
+
+function sanitiseText(value: string, maxLength: number): string {
+  return value
+    .replace(/[*_~`]/g, '')
+    .replace(/\n+/g, ' ')
+    .replace(/\s{2,}/g, ' ')
+    .trim()
+    .slice(0, maxLength)
+}
+
+function sanitisePhone(value: string): string {
+  return value
+    .replace(/[^0-9+\s]/g, '')
+    .trim()
+    .slice(0, 20)
+}
+
+function sanitiseMessage(value: string): string {
+  return value
+    .replace(/[*_~`]/g, '')
+    .replace(/\s{2,}/g, ' ')
+    .trim()
+    .slice(0, 500)
+}
+
+// ─── Layer 2: Validate ────────────────────────────────────────────────────────
+
+const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+const URL_REGEX = /https?:\/\/|www\./i
+const NAME_REGEX = /^[a-zA-Z\s'.,-]{2,80}$/
+
+function validateForm(form: QuoteForm): FormErrors {
+  const errors: FormErrors = {}
+
+  const name = sanitiseText(form.name, 80)
+  if (!name) {
+    errors.name = 'Please enter your name.'
+  } else if (!NAME_REGEX.test(name)) {
+    errors.name = 'Name should contain letters only.'
+  }
+
+  const email = form.email.trim().toLowerCase()
+  if (!email) {
+    errors.email = 'Please enter your email address.'
+  } else if (!EMAIL_REGEX.test(email)) {
+    errors.email = 'Please enter a valid email address.'
+  }
+
+  if (form.phone) {
+    const phone = sanitisePhone(form.phone)
+    if (phone.replace(/\s/g, '').length < 9) {
+      errors.phone = 'Please enter a valid phone number.'
+    }
+  }
+
+  const businessType = sanitiseText(form.businessType, 100)
+  if (!businessType) {
+    errors.businessType = 'Please tell us your type of business.'
+  } else if (URL_REGEX.test(businessType)) {
+    errors.businessType = 'Please describe your business type, not a URL.'
+  }
+
+  if (!form.pages) {
+    errors.pages = 'Please select an approximate number of pages.'
+  }
+
+  return errors
+}
+
+// ─── Build message ────────────────────────────────────────────────────────────
+
 function buildWhatsAppMessage(form: QuoteForm): string {
   const lines: string[] = []
 
   lines.push('Hi Webmerchants! I would like to request a custom quote.')
   lines.push('')
-  lines.push(`*Name:* ${form.name}`)
-  lines.push(`*Email:* ${form.email}`)
-  if (form.phone) lines.push(`*Phone:* ${form.phone}`)
-  if (form.businessType) lines.push(`*Business type:* ${form.businessType}`)
-  if (form.pages) lines.push(`*Pages needed:* ${PAGES_LABELS[form.pages] ?? form.pages}`)
+  lines.push(`Name: ${sanitiseText(form.name, 80)}`)
+  lines.push(`Email: ${form.email.trim().toLowerCase()}`)
+  if (form.phone) lines.push(`Phone: ${sanitisePhone(form.phone)}`)
+  if (form.businessType) lines.push(`Business type: ${sanitiseText(form.businessType, 100)}`)
+  if (form.pages) lines.push(`Pages needed: ${PAGES_LABELS[form.pages] ?? form.pages}`)
   if (form.features.length > 0) {
-    lines.push(`*Features required:*`)
+    lines.push('Features required:')
     form.features.forEach((f) => lines.push(`  - ${f}`))
   }
-  if (form.timeline) lines.push(`*Preferred timeline:* ${TIMELINE_LABELS[form.timeline] ?? form.timeline}`)
+  if (form.timeline) lines.push(`Preferred timeline: ${TIMELINE_LABELS[form.timeline] ?? form.timeline}`)
   if (form.message) {
     lines.push('')
-    lines.push(`*Additional notes:* ${form.message}`)
+    lines.push(`Additional notes: ${sanitiseMessage(form.message)}`)
   }
 
   return lines.join('\n')
 }
 
+// ─── Component ────────────────────────────────────────────────────────────────
+
 export default function PricingPage(): React.JSX.Element {
   const [form, setForm] = useState<QuoteForm>(EMPTY_FORM)
+  const [errors, setErrors] = useState<FormErrors>({})
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>,
   ): void => {
     const { name, value } = e.target as HTMLInputElement
     setForm((prev) => ({ ...prev, [name]: value }))
+    if (errors[name as keyof FormErrors]) {
+      setErrors((prev) => ({ ...prev, [name]: undefined }))
+    }
   }
 
   const toggleFeature = (feature: string): void => {
@@ -101,6 +189,22 @@ export default function PricingPage(): React.JSX.Element {
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>): void => {
     e.preventDefault()
+
+    // Layer 3: Honeypot — if filled, silently do nothing
+    if (form.honeypot) return
+
+    // Layer 2: Validate
+    const validationErrors = validateForm(form)
+    if (Object.keys(validationErrors).length > 0) {
+      setErrors(validationErrors)
+      const firstErrorField = Object.keys(validationErrors)[0]
+      if (firstErrorField) {
+        document.getElementsByName(firstErrorField)[0]?.focus()
+      }
+      return
+    }
+
+    // Layer 1: Sanitise, build, send
     const message = buildWhatsAppMessage(form)
     const encoded = encodeURIComponent(message)
     window.open(`https://wa.me/${WA_NUMBER}?text=${encoded}`, '_blank')
@@ -108,6 +212,8 @@ export default function PricingPage(): React.JSX.Element {
 
   const inputClass =
     'font-body text-sm text-white bg-wm-black border border-wm-border px-4 py-3 w-full focus:border-gold transition-colors duration-200 outline-none placeholder:text-wm-grey'
+
+  const errorClass = 'font-body text-[12px] text-red-400 mt-1'
 
   return (
     <>
@@ -122,9 +228,7 @@ export default function PricingPage(): React.JSX.Element {
           backgroundPosition: 'center',
         }}
       >
-        {/* Dark overlay */}
         <div className="absolute inset-0 bg-wm-black/70" aria-hidden="true" />
-
         <div className="relative z-10 px-6 lg:px-12 pb-24 pt-36">
           <p className="font-body text-gold text-xs tracking-[0.28em] uppercase mb-6">
             Custom Pricing
@@ -135,7 +239,7 @@ export default function PricingPage(): React.JSX.Element {
           </h1>
           <p className="font-body text-[15px] text-wm-grey max-w-xl leading-relaxed mt-8">
             We do not believe in one-size-fits-all packages. Tell us what you need,
-            and we will send you a detailed, fixed-price quote within 24 hours.
+            and we will send you a detailed, fixed price quote within 24 hours.
             No obligation. No pressure.
           </p>
         </div>
@@ -177,8 +281,8 @@ export default function PricingPage(): React.JSX.Element {
             <div className="flex flex-col gap-0">
               {[
                 { label: 'Number of pages', desc: 'A 5-page brochure site is a different scope from a 20-page platform with user accounts.' },
-                { label: 'Features & integrations', desc: 'M-Pesa, booking systems, e-commerce, admin dashboards — each adds real development time.' },
-                { label: 'Design complexity', desc: 'A clean corporate site differs from a heavily animated landing page. Both are valid — they just cost differently.' },
+                { label: 'Features and integrations', desc: 'M-Pesa, booking systems, e-commerce, admin dashboards. Each adds real development time.' },
+                { label: 'Design complexity', desc: 'A clean corporate site differs from a heavily animated landing page. Both are valid. They just cost differently.' },
                 { label: 'Timeline', desc: 'Rush delivery is possible but costs more. Flexible timelines get you a better rate.' },
               ].map((item) => (
                 <div key={item.label} className="border-t border-wm-border py-5">
@@ -195,7 +299,7 @@ export default function PricingPage(): React.JSX.Element {
                 rel="noopener noreferrer"
                 className="font-body text-[14px] text-[#25D366] hover:opacity-80 transition-opacity"
               >
-                WhatsApp us — we respond within 2 hours →
+                WhatsApp us. We respond within 2 hours →
               </a>
             </div>
           </div>
@@ -203,60 +307,95 @@ export default function PricingPage(): React.JSX.Element {
           {/* Right — form */}
           <div>
             <p className="font-body text-[13px] text-wm-grey leading-relaxed mb-6">
-              Fill in your requirements below. Clicking the button opens WhatsApp with everything pre-filled — just hit send.
+              Fill in your requirements below. Clicking the button opens WhatsApp with everything pre-filled. Just hit send.
             </p>
             <form onSubmit={handleSubmit} noValidate className="flex flex-col gap-4">
-              <input
-                type="text"
-                name="name"
-                value={form.name}
-                onChange={handleChange}
-                placeholder="Your Name"
-                required
-                className={inputClass}
-              />
-              <input
-                type="email"
-                name="email"
-                value={form.email}
-                onChange={handleChange}
-                placeholder="Email Address"
-                required
-                className={inputClass}
-              />
-              <input
-                type="tel"
-                name="phone"
-                value={form.phone}
-                onChange={handleChange}
-                placeholder="Phone / WhatsApp Number"
-                className={inputClass}
-              />
-              <input
-                type="text"
-                name="businessType"
-                value={form.businessType}
-                onChange={handleChange}
-                placeholder="Type of Business (e.g. Law firm, Restaurant, NGO)"
-                required
-                className={inputClass}
-              />
-              <select
-                name="pages"
-                value={form.pages}
-                onChange={handleChange}
-                required
-                className={`${inputClass} ${form.pages === '' ? 'text-wm-grey' : 'text-white'}`}
-              >
-                <option value="" disabled>Approximate Number of Pages</option>
-                <option value="1-5">1 to 5 pages</option>
-                <option value="6-10">6 to 10 pages</option>
-                <option value="11-20">11 to 20 pages</option>
-                <option value="20+">20+ pages</option>
-                <option value="unsure">Not sure yet</option>
-              </select>
 
-              {/* Feature checkboxes */}
+              {/* Layer 3: Honeypot — invisible to real users, bots fill it */}
+              <input
+                type="text"
+                name="honeypot"
+                value={form.honeypot}
+                onChange={handleChange}
+                tabIndex={-1}
+                autoComplete="off"
+                aria-hidden="true"
+                style={{ position: 'absolute', left: '-9999px', opacity: 0, height: 0 }}
+              />
+
+              <div>
+                <input
+                  type="text"
+                  name="name"
+                  value={form.name}
+                  onChange={handleChange}
+                  placeholder="Your Name"
+                  required
+                  maxLength={80}
+                  className={`${inputClass} ${errors.name ? 'border-red-400' : ''}`}
+                />
+                {errors.name && <p className={errorClass}>{errors.name}</p>}
+              </div>
+
+              <div>
+                <input
+                  type="email"
+                  name="email"
+                  value={form.email}
+                  onChange={handleChange}
+                  placeholder="Email Address"
+                  required
+                  maxLength={100}
+                  className={`${inputClass} ${errors.email ? 'border-red-400' : ''}`}
+                />
+                {errors.email && <p className={errorClass}>{errors.email}</p>}
+              </div>
+
+              <div>
+                <input
+                  type="tel"
+                  name="phone"
+                  value={form.phone}
+                  onChange={handleChange}
+                  placeholder="Phone / WhatsApp Number"
+                  maxLength={20}
+                  className={`${inputClass} ${errors.phone ? 'border-red-400' : ''}`}
+                />
+                {errors.phone && <p className={errorClass}>{errors.phone}</p>}
+              </div>
+
+              <div>
+                <input
+                  type="text"
+                  name="businessType"
+                  value={form.businessType}
+                  onChange={handleChange}
+                  placeholder="Type of Business (e.g. Law firm, Restaurant, NGO)"
+                  required
+                  maxLength={100}
+                  className={`${inputClass} ${errors.businessType ? 'border-red-400' : ''}`}
+                />
+                {errors.businessType && <p className={errorClass}>{errors.businessType}</p>}
+              </div>
+
+              <div>
+                <select
+                  name="pages"
+                  value={form.pages}
+                  onChange={handleChange}
+                  required
+                  className={`${inputClass} ${form.pages === '' ? 'text-wm-grey' : 'text-white'} ${errors.pages ? 'border-red-400' : ''}`}
+                >
+                  <option value="" disabled>Approximate Number of Pages</option>
+                  <option value="1-5">1 to 5 pages</option>
+                  <option value="6-10">6 to 10 pages</option>
+                  <option value="11-20">11 to 20 pages</option>
+                  <option value="20+">20+ pages</option>
+                  <option value="unsure">Not sure yet</option>
+                </select>
+                {errors.pages && <p className={errorClass}>{errors.pages}</p>}
+              </div>
+
               <div className="border border-wm-border p-4">
                 <p className="font-body text-[11px] text-wm-grey uppercase tracking-[0.15em] mb-4">
                   Features You Need (select all that apply)
@@ -302,14 +441,22 @@ export default function PricingPage(): React.JSX.Element {
                 <option value="flexible">Flexible</option>
               </select>
 
-              <textarea
-                name="message"
-                value={form.message}
-                onChange={handleChange}
-                placeholder="Anything else we should know about your project?"
-                rows={4}
-                className={`${inputClass} resize-none`}
-              />
+              <div>
+                <textarea
+                  name="message"
+                  value={form.message}
+                  onChange={handleChange}
+                  placeholder="Anything else we should know about your project?"
+                  rows={4}
+                  maxLength={500}
+                  className={`${inputClass} resize-none`}
+                />
+                {form.message.length > 400 && (
+                  <p className="font-body text-[11px] text-wm-grey mt-1 text-right">
+                    {500 - form.message.length} characters remaining
+                  </p>
+                )}
+              </div>
 
               <button
                 type="submit"
@@ -360,7 +507,7 @@ export default function PricingPage(): React.JSX.Element {
             Webmerchants vs The Alternatives.
           </h2>
           <p className="font-body text-[15px] text-wm-grey max-w-2xl leading-relaxed mb-16">
-            An honest comparison. We are not the cheapest option — we are the best value for Kenyan businesses that want real results.
+            An honest comparison. We are not the cheapest option. We are the best value for Kenyan businesses that want real results.
           </p>
           <div className="overflow-x-auto">
             <table className="w-full border-collapse">
@@ -375,12 +522,12 @@ export default function PricingPage(): React.JSX.Element {
               <tbody>
                 {[
                   ['Google Kenya optimisation', 'Limited', 'Maybe', '✓ Included'],
-                  ['Mobile-first for Kenya', 'Generic', 'Varies', '✓ Always'],
+                  ['Mobile first for Kenya', 'Generic', 'Varies', '✓ Always'],
                   ['M-Pesa integration', 'No', 'Extra', '✓ Available'],
                   ['WhatsApp support', 'No', 'No', '✓ Included'],
                   ['SEO setup', 'Basic', 'Varies', '✓ Full setup'],
                   ['Source code ownership', 'No', 'Varies', '✓ You own it'],
-                  ['Post-launch support', 'None', 'Unlikely', '✓ 30 days free'],
+                  ['Post launch support', 'None', 'Unlikely', '✓ 30 days free'],
                   ['Custom quote per project', 'No', 'Inconsistent', '✓ Always'],
                 ].map((row, i) => (
                   <tr key={row[0]} className={`border-b border-wm-border ${i % 2 === 0 ? 'bg-wm-black' : 'bg-wm-dark'}`}>
