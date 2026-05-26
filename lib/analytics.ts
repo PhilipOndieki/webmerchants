@@ -33,7 +33,7 @@ export function trackGoogleAdsConversion(): void {
   if (process.env.NODE_ENV !== 'production') return
   if (typeof window === 'undefined' || !window.gtag) return
   window.gtag('event', 'conversion', {
-    send_to: 'AW-18178763626/n-jiCJi3xrMcEOrWp9xD',
+    send_to: 'AW-18178763626/0Ns-CN_N0bMcEOrWp9xD',
     value: 1.0,
     currency: 'KES',
   })

@@ -214,9 +214,9 @@ export default function PricingPage(): React.JSX.Element {
     // Layer 1: Sanitise, build, send
     trackQuoteFormSubmit()
     trackGoogleAdsConversion() 
+    trackWhatsAppClick('pricing_page_form')
     const message = buildWhatsAppMessage(form)
     const encoded = encodeURIComponent(message)
-    trackWhatsAppClick('pricing_page_form')
     window.open(`https://wa.me/${WA_NUMBER}?text=${encoded}`, '_blank')
   }
 
