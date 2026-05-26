@@ -6,7 +6,7 @@ import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
 import { addOns } from '@/data/content'
 import { WA_NUMBER, WA_BASE_URL, WA_PRICING_MESSAGE } from '@/constants'
-import { trackWhatsAppClick, trackQuoteFormStart, trackQuoteFormSubmit } from '@/lib/analytics'
+import { trackWhatsAppClick, trackQuoteFormStart, trackQuoteFormSubmit, trackGoogleAdsConversion } from '@/lib/analytics'
 
 interface QuoteForm {
   name: string
@@ -213,6 +213,7 @@ export default function PricingPage(): React.JSX.Element {
 
     // Layer 1: Sanitise, build, send
     trackQuoteFormSubmit()
+    trackGoogleAdsConversion() 
     const message = buildWhatsAppMessage(form)
     const encoded = encodeURIComponent(message)
     trackWhatsAppClick('pricing_page_form')

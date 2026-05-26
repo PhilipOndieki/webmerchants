@@ -28,3 +28,11 @@ export function trackCaseStudyView(project: string): void {
 export function trackBlogArticleView(slug: string): void {
   safeTrack('blog_article_view', { slug })
 }
+
+export function trackGoogleAdsConversion(): void {
+  if (process.env.NODE_ENV !== 'production') return
+  if (typeof window === 'undefined' || !window.gtag) return
+  window.gtag('event', 'conversion', {
+    send_to: 'AW-18178763626/n-jiCJi3xrMcEOrWp9xD',
+  })
+}

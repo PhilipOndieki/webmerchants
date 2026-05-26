@@ -1,7 +1,9 @@
 import type { Metadata } from 'next'
 import { Cormorant_Garamond, Didact_Gothic } from 'next/font/google'
+import Script from 'next/script'
 import './globals.css'
 import { Analytics } from '@vercel/analytics/react'
+import GoogleAdsPageTracker from '@/components/GoogleAdsPageTracker'
 
 const cormorantGaramond = Cormorant_Garamond({
   subsets: ['latin'],
@@ -54,6 +56,9 @@ export const metadata: Metadata = {
   },
 }
 
+const GA_ID = 'AW-18178763626'
+const IS_PROD = process.env.NODE_ENV === 'production'
+
 export default function RootLayout({
   children,
 }: {
@@ -67,6 +72,30 @@ export default function RootLayout({
       <body className="bg-wm-black font-body antialiased">
         {children}
         <Analytics />
+
+        {/* ── Google Ads — production only ─────────────────────────────── */}
+        {IS_PROD && (
+          <>
+            {/* 1. Load the gtag.js library */}
+            <Script
+              src={`https://www.googletagmanager.com/gtag/js?id=${GA_ID}`}
+              strategy="afterInteractive"
+            />
+
+            {/* 2. Initialise gtag and fire the first page_view on hard load */}
+            <Script id="gtag-init" strategy="afterInteractive">
+              {`
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){dataLayer.push(arguments);}
+                gtag('js', new Date());
+                gtag('config', '${GA_ID}', { send_page_view: true });
+              `}
+            </Script>
+
+            {/* 3. Track every subsequent client-side route change */}
+            <GoogleAdsPageTracker />
+          </>
+        )}
       </body>
     </html>
   )
