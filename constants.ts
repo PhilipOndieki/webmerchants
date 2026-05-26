@@ -15,6 +15,6 @@ export const WA_TOPIC_MESSAGE = encodeURIComponent(
   "Hi Webmerchants, I'd like to suggest a blog topic."
 )
 
-export const CONTACT_EMAIL = 'info@webmerchants.co.ke'
+export const CONTACT_EMAIL = 'webmerchants45@gmail.com'
 export const CONTACT_PHONE = '+254 796 422 627'
 export const CONTACT_PHONE_RAW = '+254796422627'
