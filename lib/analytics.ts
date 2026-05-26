@@ -34,5 +34,7 @@ export function trackGoogleAdsConversion(): void {
   if (typeof window === 'undefined' || !window.gtag) return
   window.gtag('event', 'conversion', {
     send_to: 'AW-18178763626/n-jiCJi3xrMcEOrWp9xD',
+    value: 1.0,
+    currency: 'KES',
   })
 }
