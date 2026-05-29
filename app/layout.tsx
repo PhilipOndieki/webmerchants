@@ -4,6 +4,7 @@ import Script from 'next/script'
 import './globals.css'
 import { Analytics } from '@vercel/analytics/react'
 import GoogleAdsPageTracker from '@/components/GoogleAdsPageTracker'
+import FloatingWhatsApp from '@/components/FloatingWhatsApp'
 
 const cormorantGaramond = Cormorant_Garamond({
   subsets: ['latin'],
@@ -72,7 +73,7 @@ export default function RootLayout({
       <body className="bg-wm-black font-body antialiased">
         {children}
         <Analytics />
-
+        <FloatingWhatsApp />
         {/* ── Google Ads — production only ─────────────────────────────── */}
         {IS_PROD && (
           <>
@@ -96,6 +97,7 @@ export default function RootLayout({
             <GoogleAdsPageTracker />
           </>
         )}
+        
       </body>
     </html>
   )
