@@ -8,10 +8,14 @@ export default function Hero(): React.JSX.Element {
   ]
 
   return (
-    <section className="relative min-h-screen flex flex-col justify-center bg-wm-black overflow-hidden">
-      {/* Grid texture overlay */}
-      <div className="absolute inset-0 hero-grid pointer-events-none" aria-hidden="true" />
-
+    <section
+      className="relative min-h-screen flex flex-col justify-center overflow-hidden"
+      style={{
+        backgroundImage: 'url(/hero-madaraka.png)',
+        backgroundSize: 'cover',
+        backgroundPosition: 'center right',
+      }}
+    >
       {/* Main content */}
       <div className="relative z-10 px-6 lg:px-12 pt-24 pb-40">
 
