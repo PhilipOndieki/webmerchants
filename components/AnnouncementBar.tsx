@@ -12,7 +12,7 @@ export default function AnnouncementBar(): React.JSX.Element | null {
   return (
     <div className="w-full bg-gold text-wm-black py-2.5 px-6 flex items-center justify-center relative z-50">
       <p className="font-body text-[11px] uppercase tracking-[0.2em] text-center">
-        Happy Madaraka Day. We are open and ready to build your next project.{' '}
+        Click here to grab your 2026 exclusive offer. Offer lasts till 31st August 2026. {' '}
         <a
           href={WA_BASE_URL}
           target="_blank"
