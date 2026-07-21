@@ -48,13 +48,13 @@ export default function Navbar(): React.JSX.Element {
         </Link>
 
         {/* Desktop nav links */}
-        <ul className="hidden lg:flex items-center gap-8">
+        <ul className="hidden lg:flex items-center gap-8 ml-auto">
           {navLinks.map((link) => (
             <li key={link.href}>
               <Link
                 href={link.href}
-                className={`font-body text-[11px] uppercase tracking-[0.18em] transition-colors duration-200 ${
-                  pathname === link.href ? 'text-gold' : 'text-wm-grey hover:text-gold'
+                className={`font-body text-[15px] tracking-[0.18em] transition-colors duration-200 ${
+                  pathname === link.href ? 'text-gold' : 'text-white hover:text-gold'
                 }`}
               >
                 {link.label}
@@ -62,16 +62,6 @@ export default function Navbar(): React.JSX.Element {
             </li>
           ))}
         </ul>
-
-        {/* Desktop CTA — now goes to /pricing */}
-        <div className="hidden lg:flex items-center">
-          <Link
-            href="/pricing"
-            className="font-body text-[11px] uppercase tracking-[0.18em] bg-gold text-wm-black px-6 py-3 hover:bg-gold-light transition-colors duration-200"
-          >
-            Get a Quote
-          </Link>
-        </div>
 
         {/* Mobile hamburger */}
         <button
