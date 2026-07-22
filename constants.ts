@@ -3,7 +3,7 @@
  * Change a value here and it updates everywhere automatically.
  */
 
-export const WA_NUMBER = '254796422627'
+export const WA_NUMBER = '254703141296'
 export const WA_BASE_URL = `https://wa.me/${WA_NUMBER}`
 export const WA_DEFAULT_MESSAGE = encodeURIComponent(
   "Hi Webmerchants, I'd like to discuss a web project."
@@ -16,5 +16,5 @@ export const WA_TOPIC_MESSAGE = encodeURIComponent(
 )
 
 export const CONTACT_EMAIL = 'webmerchants45@gmail.com'
-export const CONTACT_PHONE = '+254 796 422 627'
-export const CONTACT_PHONE_RAW = '+254796422627'
+export const CONTACT_PHONE = '+254 703 141 296'
+export const CONTACT_PHONE_RAW = '+254703141296'
