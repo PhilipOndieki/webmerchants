@@ -77,6 +77,13 @@ export default function RootLayout({
         {/* ── Google Ads — production only ─────────────────────────────── */}
         {IS_PROD && (
           <>
+            {/* AdSense */}
+            <Script
+              async
+              src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4744330248016280"
+              crossOrigin="anonymous"
+              strategy="afterInteractive"
+            />
             {/* 1. Load the gtag.js library */}
             <Script
               src={`https://www.googletagmanager.com/gtag/js?id=${GA_ID}`}
