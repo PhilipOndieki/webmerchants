@@ -810,18 +810,6 @@ export const blogArticles: BlogArticle[] = [
         type: 'paragraph',
         text: 'It is worth sitting with the fact that HaloBraid did not raise its funding by chasing whatever venture capital found fashionable that quarter. It raised money by solving a problem so large and so well documented that investors could not ignore the math: eight billion hours, a client base that spends heavily on hair care, and zero existing competitors solving the physical strain problem at scale. The 7,000 salons on the waiting list did not sign up because of clever marketing. They signed up because every stylist among them has felt exactly the strain HaloBraid is built to reduce.',
       },
-      {
-        type: 'heading',
-        text: 'What This Means If You Are Building Something in Kenya',
-      },
-      {
-        type: 'paragraph',
-        text: 'You do not need a robotics lab or a Harvard engineering degree to apply the actual lesson here. You need to look, with real seriousness, at the repetitive, painful, unglamorous parts of an industry you understand well, and ask why nobody has fixed it yet. Salons, boda boda logistics, market vendor bookkeeping, matatu sacco payments, small farm produce sales — every one of these has its own version of the four-day braiding chair. The founders who win are rarely the ones with the fanciest technology. They are the ones who sat in the chair long enough to actually feel the problem.',
-      },
-      {
-        type: 'paragraph',
-        text: 'The other lesson is patience with credibility. Ogunbiyi did not launch HaloBraid as a rushed side project. She built it over years, protected the trust of the stylists she needed on her side, and let the product speak before the marketing did. Whatever you are building, whether it is a physical product or simply a website that represents your business online, the same rule holds: solve a real, deeply felt problem, respect the people already doing the work, and the credibility follows the substance. It rarely works the other way around.',
-      },
     ],
   },
   {
@@ -870,30 +858,6 @@ export const blogArticles: BlogArticle[] = [
       {
         type: 'quote',
         text: 'A product either works or it does not. A dissertation can be argued either way.',
-      },
-      {
-        type: 'heading',
-        text: 'What This Means for Self-Taught Talent in Kenya',
-      },
-      {
-        type: 'paragraph',
-        text: 'This story matters far beyond China\'s universities, especially here. Kenya has a growing generation of developers, designers, and engineers who learned their craft outside the traditional degree path, through platforms like CS50, the Power Learn Project, YouTube, and raw trial and error on real client projects. For years, the working assumption in much of the job market has been that a certificate or a four-year degree is the proof that matters. China\'s practical PhD experiment is a signal, from one of the most credential-obsessed education systems in the world, that this assumption is starting to crack even at the highest level of academic achievement.',
-      },
-      {
-        type: 'list',
-        items: [
-          'A working e-commerce site handling real M-Pesa transactions is proof of skill a certificate cannot replace.',
-          'A portfolio of shipped client projects demonstrates problem-solving ability that a transcript cannot capture.',
-          'A business owner deciding who builds their website should ask to see live, working products first, credentials second.',
-        ],
-      },
-      {
-        type: 'paragraph',
-        text: 'None of this means credentials are worthless. Wei Lianfeng and Zheng Hehui still went through rigorous supervision, oral defence, and institutional scrutiny. Their route was different, not undisciplined. The lesson for Kenyan founders, developers, and business owners hiring for technical work is the same lesson China\'s Ministry of Education arrived at after watching a decade of unread academic papers pile up: ask for evidence that the thing works, not just evidence that someone studied how it might.',
-      },
-      {
-        type: 'paragraph',
-        text: 'If you are building a career in tech in Kenya and you did not take the traditional degree path, this is your evidence that the world\'s judgement on what counts as real expertise is shifting toward proof over paper. Build the working thing. Let it hold up the bridge.',
       },
     ],
   },
