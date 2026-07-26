@@ -747,4 +747,154 @@ export const blogArticles: BlogArticle[] = [
       },
     ],
   },
+  {
+    slug: 'halobraid-robot-braiding-innovation',
+    title: 'The Robot That Learned to Braid: What HaloBraid Teaches Every Entrepreneur',
+    excerpt:
+      'A Harvard engineer spent four days braiding her own hair, got frustrated, and built a robot for it. Now she has $7 million and 7,000 salons on a waiting list. Here is why the idea, not the robotics, is the real story.',
+    date: '2026-07-26',
+    readTime: '6 min',
+    category: 'Innovation',
+    author: 'Philip Ondieki',
+    content: [
+      {
+        type: 'paragraph',
+        text: 'In 2020, a Harvard-trained engineer named Yinka Ogunbiyi sat in a chair for four straight days installing her own knotless braids. Anyone who has braided hair, or sat still while someone else did it, knows exactly what those four days felt like. What made Ogunbiyi different is what she did next. She did not simply finish her hair and move on. She looked at the process and asked a question almost nobody in the beauty industry had asked with any seriousness: why has this multi-billion-dollar industry seen almost no technological innovation in a hundred years?',
+      },
+      {
+        type: 'paragraph',
+        text: 'That question became HaloBraid, billed as the world\'s first braid-assist robot. Six years later, the company has raised $7 million in seed funding, attracted backing from investors including Reddit co-founder Alexis Ohanian\'s venture firm Seven Seven Six, and built a waiting list of more than 7,000 professional salons before the product has even fully launched. This is not a Silicon Valley toy. It is a serious commercial bet on an industry the tech world had ignored for decades.',
+      },
+      {
+        type: 'heading',
+        text: 'An Industry Hiding in Plain Sight',
+      },
+      {
+        type: 'stat',
+        stat: '8 billion',
+        statLabel: 'hours are spent in braiding chairs, according to Ogunbiyi\'s own research, with Black women making up the overwhelming majority of that time.',
+      },
+      {
+        type: 'paragraph',
+        text: 'Eight billion hours is not a rounding error. It is one of the largest unaddressed time burdens in any personal service industry on the planet, and until HaloBraid, it had attracted almost no serious engineering attention. That is the first lesson for any founder reading this. The biggest opportunities are rarely hiding in obscure, hard-to-reach markets. They are sitting in industries everyone has walked past because nobody paused long enough to measure the pain.',
+      },
+      {
+        type: 'quote',
+        text: 'The best startup ideas often look like chores nobody bothered to question.',
+      },
+      {
+        type: 'heading',
+        text: 'How the Robot Actually Works',
+      },
+      {
+        type: 'paragraph',
+        text: 'HaloBraid is not designed to replace the stylist. It is built as what engineers call a "cobot," a collaborative robot that works alongside a human rather than instead of one. The stylist still sections the hair, creates the foundation knot, and handles the finishing, trimming, and styling. HaloBraid steps in for the middle stretch, the long, repetitive, physically punishing sequence of braiding motions that consumes most of a knotless braid appointment. The company says the device can cut appointment time roughly in half, with a longer-term goal of helping stylists work up to five times faster.',
+      },
+      {
+        type: 'list',
+        items: [
+          'The stylist parts the hair and creates the anchor knot, the technical and creative foundation of the style.',
+          'HaloBraid takes over the repetitive mid-length braiding sequence, the part responsible for most of the physical strain.',
+          'The stylist returns to finish, trim, seal, and style, keeping full creative control of the final look.',
+        ],
+      },
+      {
+        type: 'paragraph',
+        text: 'This design choice was deliberate, and it is the second lesson worth pulling out of this story. Ogunbiyi built HaloBraid by working closely with professional braiders rather than around them. She co-developed the device with fellow Harvard alumnus David Afolabi only after spending real time understanding what stylists actually needed protected: their craft, their income, and their relationship with clients. Technology that arrives to serve an industry, instead of conquering it, gets invited in. Technology that arrives to replace people gets resisted, sometimes rightly so.',
+      },
+      {
+        type: 'heading',
+        text: 'The Money Followed the Problem, Not the Trend',
+      },
+      {
+        type: 'paragraph',
+        text: 'It is worth sitting with the fact that HaloBraid did not raise its funding by chasing whatever venture capital found fashionable that quarter. It raised money by solving a problem so large and so well documented that investors could not ignore the math: eight billion hours, a client base that spends heavily on hair care, and zero existing competitors solving the physical strain problem at scale. The 7,000 salons on the waiting list did not sign up because of clever marketing. They signed up because every stylist among them has felt exactly the strain HaloBraid is built to reduce.',
+      },
+      {
+        type: 'heading',
+        text: 'What This Means If You Are Building Something in Kenya',
+      },
+      {
+        type: 'paragraph',
+        text: 'You do not need a robotics lab or a Harvard engineering degree to apply the actual lesson here. You need to look, with real seriousness, at the repetitive, painful, unglamorous parts of an industry you understand well, and ask why nobody has fixed it yet. Salons, boda boda logistics, market vendor bookkeeping, matatu sacco payments, small farm produce sales — every one of these has its own version of the four-day braiding chair. The founders who win are rarely the ones with the fanciest technology. They are the ones who sat in the chair long enough to actually feel the problem.',
+      },
+      {
+        type: 'paragraph',
+        text: 'The other lesson is patience with credibility. Ogunbiyi did not launch HaloBraid as a rushed side project. She built it over years, protected the trust of the stylists she needed on her side, and let the product speak before the marketing did. Whatever you are building, whether it is a physical product or simply a website that represents your business online, the same rule holds: solve a real, deeply felt problem, respect the people already doing the work, and the credibility follows the substance. It rarely works the other way around.',
+      },
+    ],
+  },
+  {
+    slug: 'china-practical-phd-build-dont-write',
+    title: 'China Just Started Handing Out PhDs for Building Things Instead of Writing About Them',
+    excerpt:
+      'A welder-turned-engineer got his doctorate for building equipment that works inside a nuclear facility. No 100-page dissertation. No thesis defence in the traditional sense. Just proof the thing works. Here is what that shift says about credentials versus skill.',
+    date: '2026-07-26',
+    readTime: '6 min',
+    category: 'Business Growth',
+    author: 'Philip Ondieki',
+    content: [
+      {
+        type: 'paragraph',
+        text: 'Last September, an engineer named Wei Lianfeng walked into an oral defence at the Harbin Institute of Technology in China. He had spent a decade working his way up from technician to technical expert on factory floors before returning to school. He did not bring a 100-page dissertation. He brought a working vacuum laser welding process and the equipment he built to run it, developed for use inside nuclear facilities. He passed. He is now one of the first people in China to receive a PhD in engineering without writing a traditional thesis.',
+      },
+      {
+        type: 'paragraph',
+        text: 'He is not alone. At Southeast University in Nanjing, a civil engineer named Zheng Hehui defended his own doctorate the same way, presenting a set of reinforced steel, Lego-like interlocking blocks he had designed for assembling bridge pylons. Those blocks are not a diagram in an appendix. They are holding up the Changtai Yangtze River Bridge, a cable-stayed structure now carrying rail and road traffic across one of the world\'s most important waterways. Since the pilot began, at least eleven engineers in China have earned doctorates this way, in fields ranging from welding systems to firefighting equipment for large seaplanes.',
+      },
+      {
+        type: 'heading',
+        text: 'Why China Is Doing This',
+      },
+      {
+        type: 'paragraph',
+        text: 'Under a law passed in 2024, Chinese universities can now award engineering doctorates based on physical prototypes, new techniques, or completed project installations instead of theoretical dissertations. The policy is explicitly tied to national strategy. China wants engineers who can solve "bottleneck" problems, the specific technological choke points where the country still depends on foreign imports, in fields like semiconductors, electronics, and advanced manufacturing. The Ministry of Education has run pilot programmes in eighteen critical fields since 2022.',
+      },
+      {
+        type: 'stat',
+        stat: '67',
+        statLabel: 'students from the first pilot cohort applied for their doctorate based on real designs, proposals, and case reports rather than dissertations.',
+      },
+      {
+        type: 'paragraph',
+        text: 'That number is still small next to the more than 97,000 PhDs China produces every year. But the direction of travel matters more than the current scale. The country that trained a generation of engineers to write papers is now, deliberately, training a new generation to build things that hold up bridges and run inside nuclear reactors instead.',
+      },
+      {
+        type: 'heading',
+        text: 'The Uncomfortable Question This Raises',
+      },
+      {
+        type: 'paragraph',
+        text: 'For years, the value of a credential was assumed to come from the difficulty of earning it. A PhD meant years of theory, defended in front of a panel that judged your command of the literature. China\'s practical doctorate track quietly rejects that assumption. It argues that a welding system running safely inside a nuclear facility is proof of expertise no dissertation can fake, and that a paper can be plagiarised, ghostwritten, or padded with citations in a way that a functioning bridge pylon cannot.',
+      },
+      {
+        type: 'quote',
+        text: 'A product either works or it does not. A dissertation can be argued either way.',
+      },
+      {
+        type: 'heading',
+        text: 'What This Means for Self-Taught Talent in Kenya',
+      },
+      {
+        type: 'paragraph',
+        text: 'This story matters far beyond China\'s universities, especially here. Kenya has a growing generation of developers, designers, and engineers who learned their craft outside the traditional degree path, through platforms like CS50, the Power Learn Project, YouTube, and raw trial and error on real client projects. For years, the working assumption in much of the job market has been that a certificate or a four-year degree is the proof that matters. China\'s practical PhD experiment is a signal, from one of the most credential-obsessed education systems in the world, that this assumption is starting to crack even at the highest level of academic achievement.',
+      },
+      {
+        type: 'list',
+        items: [
+          'A working e-commerce site handling real M-Pesa transactions is proof of skill a certificate cannot replace.',
+          'A portfolio of shipped client projects demonstrates problem-solving ability that a transcript cannot capture.',
+          'A business owner deciding who builds their website should ask to see live, working products first, credentials second.',
+        ],
+      },
+      {
+        type: 'paragraph',
+        text: 'None of this means credentials are worthless. Wei Lianfeng and Zheng Hehui still went through rigorous supervision, oral defence, and institutional scrutiny. Their route was different, not undisciplined. The lesson for Kenyan founders, developers, and business owners hiring for technical work is the same lesson China\'s Ministry of Education arrived at after watching a decade of unread academic papers pile up: ask for evidence that the thing works, not just evidence that someone studied how it might.',
+      },
+      {
+        type: 'paragraph',
+        text: 'If you are building a career in tech in Kenya and you did not take the traditional degree path, this is your evidence that the world\'s judgement on what counts as real expertise is shifting toward proof over paper. Build the working thing. Let it hold up the bridge.',
+      },
+    ],
+  },
 ]
